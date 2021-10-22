@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import websiteHeader from '~/layouts/webHeader'
-import websiteFooter from '~/layouts/webFooter'
+import websiteHeader from '~/components/webHeader'
+import websiteFooter from '~/components/webFooter'
 
 export default {
   name: "default",
@@ -21,13 +21,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .website-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-.website-container .content {
-  flex: 1;
+  .content {
+    flex: 1;
+  }
 }
 </style>

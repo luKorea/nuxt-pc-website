@@ -13,5 +13,8 @@
     "core-js": "^3.15.1",
     "nanoid": "^3.1.30",
     "nuxt": "^2.15.7"
+  },
+  "devDependencies": {
+    "less-loader": "^7.3.0"
   }
 }
