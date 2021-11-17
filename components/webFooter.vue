@@ -48,9 +48,9 @@ export default {
   name: "webFooter",
   data () {
     return {
-      logo: require('static/image/white-logo.png'),
-      publicQrcode: require('static/image/qrcode.png'),
-      serviceQrcode: require('static/image/qrcode.png'),
+      logo: require('~/static/image/white-logo.png'),
+      publicQrcode: require('~/static/image/qrcode.png'),
+      serviceQrcode: require('~/static/image/qrcode.png'),
       companyInfo: companyInfo,
       linkToWebsite: [
         {
@@ -81,6 +81,9 @@ export default {
       ],
     }
   },
+  mounted () {
+    console.log(window.zhuge, 'zhuge')
+  }
 }
 </script>
 
@@ -95,9 +98,9 @@ export default {
   justify-content: center;
   align-items: center;
   height: 367px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  //position: fixed;
+  //bottom: 0;
+  //left: 0;
   width: 100%;
   background: #1B1E2E;
 

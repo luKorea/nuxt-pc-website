@@ -1,7 +1,5 @@
 <template>
-  <div>
-    关于我们
-  </div>
+  <nuxt-child></nuxt-child>
 </template>
 
 <script>
