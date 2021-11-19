@@ -4,9 +4,6 @@
       <website-header>
         <template #imgWrap>
           <div class="content">
-            <div class="img-wrap">
-              <img :src="bannerImg" alt="">
-            </div>
             <div class="service-wrap">
               <div class="title-wrap">
                 <div class="title">千职鹤</div>
@@ -23,24 +20,29 @@
     </div>
     <div class="item-wrap">
       <template v-for="(item, index) in itemList">
-        <span :key="item.id" class="item"
-              @click="changeClick(index, item.id)"
-              :class="currentIndex === index && 'active'">{{ item.name }}</span>
+        <span :key="index" class="item"
+              @click="changeClick(index, item.category)"
+              :class="currentIndex === index && 'active'">{{ item.category }}</span>
       </template>
     </div>
     <div class="list-wrap">
       <template v-for="item in list">
-        <div class="list-item" :key="item.id">
-          <div class="item-img"><img :src="item.img" alt=""></div>
+        <div class="list-item" :key="item._id" @click="goDetail(item.article)" :title="item.full_title">
+          <div class="item-img"><img :src="item.image" alt=""></div>
           <div class="title-wrap">
-            <div class="title">{{ item.title }}</div>
-            <div class="time">{{ item.time }}</div>
+            <div class="title">{{ item.full_title }}</div>
+            <div class="time">{{ item._created_at }}</div>
           </div>
         </div>
       </template>
     </div>
 
-    <web-pagination :total="100"></web-pagination>
+    <web-pagination
+        :page="params.pageNumber + 1"
+        :total="params.total"
+        @handleCurrentChange="handleCurrentChange"
+        @handleSizeChange="handleSizeChange"
+    ></web-pagination>
   </div>
 </template>
 
@@ -58,21 +60,8 @@ export default {
   data () {
     return {
       currentIndex: 0,
-      bannerImg: require('static/image/article/article-banner.png'),
-      qrcode: require('static/image/qrcode.png'),
-      itemList: [
-        { id: nanoid(8), name: '全部债权' },
-        { id: nanoid(8), name: '职业初了解' },
-        { id: nanoid(8), name: '走进大学' },
-        { id: nanoid(8), name: '新高考选科' },
-        { id: nanoid(8), name: '双一流大学' },
-        { id: nanoid(8), name: '高考新鲜事' },
-        { id: nanoid(8), name: '公司活动与合作' },
-        { id: nanoid(8), name: '职业再判断' },
-        { id: nanoid(8), name: '真人采访' },
-        { id: nanoid(8), name: '新闻时事' },
-        { id: nanoid(8), name: '其他' },
-      ],
+      qrcode: require('~/static/image/common/qrcode.png'),
+      itemList: [],
       list: [
         {
           id: nanoid(8),
@@ -126,13 +115,61 @@ export default {
       params: {
         pageSize: 10,
         pageNumber: 0,
+        category: '',
+        total: 0
       },
     }
   },
+  mounted () {
+    this.getArticleItem().then(res => {
+      this.getData(this.params)
+    })
+  },
   methods: {
-    changeClick (index, id) {
-      this.currentIndex = index;
+    async getData(params) {
+      let url = `/article/getArticleDetailPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}&category=${params.category}`
+      let response = await this.$axios.get(url);
+      if (response.errorCode === 200) {
+        this.list = response.data.result;
+        this.params.total = response.data.pageResult.total;
+      }
     },
+    changeClick (index, category) {
+      this.currentIndex = index;
+      this.params.category = category;
+      this.resetParams();
+      this.getData(this.params);
+    },
+    getArticleItem() {
+      return new Promise((resolve, reject) => {
+        this.$axios.get('/article/getArticleMenu')
+        .then(res => {
+          if (res.errorCode === 200) {
+            this.itemList = res.data;
+            this.params.category = this.itemList[this.currentIndex].category;
+            resolve();
+          } else {
+            reject(res.errMsg)
+          }
+        })
+      })
+    },
+    goDetail(url) {
+      window.open(url, '_blank')
+    },
+    resetParams() {
+      this.params.pageSize = 10;
+      this.params.pageNumber = 0;
+    },
+    handleSizeChange(val) {
+      this.params.pageSize = val;
+      this.getData(this.params);
+    },
+    handleCurrentChange(val) {
+      this.params.pageNumber = val;
+      this.getData(this.params);
+    },
+
   },
 }
 </script>
@@ -140,17 +177,10 @@ export default {
 <style scoped lang="less">
 .article-container {
   .content {
-    .img-wrap {
-      width: 100%;
-      height: 640px;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
+    background-image: url("static/image/article/article-banner.png");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 640px;
     .service-wrap {
       position: absolute;
       left: 340px;

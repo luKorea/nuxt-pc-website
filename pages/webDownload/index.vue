@@ -3,9 +3,7 @@
     <web-header>
       <template #imgWrap>
         <div class="content">
-          <div class="down-img-wrap">
-            <img :src="img" alt="">
-          </div>
+          <div class="down-img-wrap"></div>
           <div class="tip-wrap">
             <div class="top">
               <div class="title">千职鹤—生涯规划APP</div>
@@ -27,7 +25,7 @@
                     <div class="icon-img">
                       <img :src="iosIcon" alt=""/>
                     </div>
-                    <span>iOS APP下载</span>
+                    <span>IOS APP下载</span>
                   </div>
                 </div>
               </div>
@@ -51,10 +49,9 @@ export default {
   components: { WebHeader },
   data () {
     return {
-      img: require('~/static/image/download/donwload-banner.png'),
-      qrcode: require('static/image/qrcode.png'),
-      androidIcon: require('~/static/image/download/android-icon.png'),
-      iosIcon: require('~/static/image/download/ios-icon.png'),
+      qrcode: 'https://www.careershe.com/images/mobile_download_url.png',
+      androidIcon: require('~/static/image/common/android-icon.png'),
+      iosIcon: require('~/static/image/common/ios-icon.png'),
     }
   },
 }
@@ -63,16 +60,10 @@ export default {
 <style scoped lang="less">
 .download-container {
   .content {
-    .down-img-wrap {
-      height: 900px;
-      width: 100%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+    height: 900px;
+    width: 100%;
+    background-image: url("static/image/download/donwload-banner.png");
+    background-size: 100% 100%;
 
     .tip-wrap {
       position: absolute;
@@ -133,19 +124,21 @@ export default {
               align-items: center;
               width: 172px;
               height: 53px;
-              line-height: 53px;
+              //line-height: 53px;
               background: rgba(255, 255, 255, 0.2);
               font-size: 16px;
               font-family: MicrosoftYaHei;
               color: #FFFFFF;
+
               .icon-img {
-                width: 16px;
-                height: 16px;
-                margin-right: 4px;
+                width: 17px;
+                height: 20px;
+                margin-right: 12px;
+
                 img {
                   width: 100%;
                   height: 100%;
-                  vertical-align: top;
+                  //vertical-align: top;
                 }
               }
             }

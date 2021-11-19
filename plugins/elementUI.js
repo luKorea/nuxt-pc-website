@@ -8,9 +8,15 @@ import {
   Input,
   Menu,
   MenuItem,
-  Submenu
+  Submenu,
+  Select,
+  Option,
+  Popover
 } from 'element-ui' //引入分页组件
 
+Vue.use(Popover)
+Vue.use(Select)
+Vue.use(Option)
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Submenu);

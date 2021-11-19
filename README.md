@@ -6,13 +6,17 @@
    2. webPagination 分页器
    3. webFooter 脚注
    4. webHeader 头部
+   5. webMap 高德地图组件
 3. 
 4. layouts	布局组件目录
 5. pages	页面目录，所有的vue视图，nuxt根据目录结构自动生成对应的路由。
    1. index 首页
    2. webAbout 关于我们
-      1. index
-         1. contact 联系我们
+      1. contact 联系我们
+      2. joinUs 加入我们
+      3. dynamic 企业动态
+         1. index 首页
+         2. _id 详情页
    3. webEnglish 英文网
    4. webDownload APP下载页面
    5. webArticle 文章咨询

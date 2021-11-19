@@ -19,11 +19,18 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
+    script: [
+      {
+        type: 'text/javascript',
+        src: 'https://webapi.amap.com/maps?v=1.4.15&key=946019370b8b10d15d4e11da07b9bc07',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'assets/common.less',
+    'assets/arrow.css',
     'assets/normalize.min.css',
     'element-ui/lib/theme-chalk/index.css',
   ],
@@ -32,6 +39,10 @@ export default {
   plugins: [
     {
       src: '~plugins/elementUI',
+      ssr: true,
+    },
+    {
+      src: '~plugins/axios',
       ssr: true,
     }
   ],
@@ -47,10 +58,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    vendor: ['element-ui'],
+  },
 }

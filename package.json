@@ -13,7 +13,8 @@
     "core-js": "^3.15.1",
     "element-ui": "^2.15.6",
     "nanoid": "^3.1.30",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "less-loader": "^7.3.0"

@@ -1,6 +1,6 @@
 <template>
   <div class="pagination-wrap">
-    <span class="btn-pagination">首页</span>
+<!--    <span class="btn-pagination">首页</span>-->
     <el-pagination
         background
         :current-page.sync="currentPage"
@@ -14,7 +14,7 @@
         @current-change="handleCurrentChange"
     >
     </el-pagination>
-    <span class="btn-pagination">尾页</span>
+<!--    <span class="btn-pagination">尾页</span>-->
   </div>
 </template>
 
@@ -83,6 +83,7 @@ export default {
   },
   methods: {
     handleSizeChange(val) {
+      console.log(val, 'dddd')
       this.$emit("handleSizeChange", val);
     },
     handleCurrentChange(val) {
