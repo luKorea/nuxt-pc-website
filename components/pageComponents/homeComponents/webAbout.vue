@@ -2,7 +2,7 @@
   <div class="about-container">
     <div class="common-title">{{ aboutInfo.title }}</div>
     <div class="common-desc about-desc">{{ aboutInfo.desc }}</div>
-    <div class="btn-home">
+    <div class="btn-home" @click="goAbout">
       <div class="btn-more">了解更多</div>
     </div>
   </div>
@@ -19,6 +19,13 @@ export default {
       },
     }
   },
+  methods: {
+    goAbout() {
+      this.$router.push({
+        path: '/webAbout/description'
+      })
+    }
+  }
 }
 </script>
 

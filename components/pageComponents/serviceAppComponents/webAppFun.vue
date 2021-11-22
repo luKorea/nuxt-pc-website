@@ -3,6 +3,7 @@
     <div class="fun-wrap">
       <div class="common-title text-center">千职鹤APP解决方案</div>
       <div class="fun-content">
+        <img :src="appServiceImg" alt="">
       </div>
     </div>
     <web-list :one-info="oneInfo" :two-info="twoInfo" @clickFunction="clickFunction"/>
@@ -20,6 +21,7 @@ export default {
   },
   data () {
     return {
+      appServiceImg: require('static/image/service/app/app-service.png'),
       oneInfo: {
         title: '生涯发展',
         btnFont: '立即下载',
@@ -83,10 +85,10 @@ export default {
     }
   },
   methods: {
-    clickFunction() {
+    clickFunction () {
       this.$emit('clickFunction')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -103,6 +105,11 @@ export default {
     padding: 80px 0;
 
     .fun-content {
+      height: 500px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

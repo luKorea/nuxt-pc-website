@@ -14,7 +14,7 @@
     <!--规划模块-->
     <web-service @goPage="goPage" @changeVisible="changeVisible"/>
     <!--企业动态-->
-    <web-news :list="newsList"/>
+    <web-news :list="newsList" @goDetail="goNewsDetail"/>
     <!--关于我们-->
     <web-about/>
 
@@ -90,6 +90,11 @@ export default {
         }
       })
     },
+    goNewsDetail(_id) {
+      this.$router.push({
+        path: `/webAbout/dynamic/${_id}`
+      })
+    }
   },
 }
 </script>

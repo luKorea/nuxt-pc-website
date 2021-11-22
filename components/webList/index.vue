@@ -10,9 +10,7 @@
           <template v-for="(item, index) in oneInfo.list">
             <div class="item" :key="item.id" @mousemove="moveItemOne(index, item.imgUrl)">
               <div v-if="currentOneIndex !== index" class="number">{{ index + 1 }}</div>
-              <div v-else class="number-wai">
-                <div class="number-nei">{{ index + 1 }}</div>
-              </div>
+              <div v-else class="number-wai">{{ index + 1 }}</div>
               <div class="title" :class="currentOneIndex === index && 'title-active'">{{ item.title }}</div>
               <div class="desc" :class="currentOneIndex === index && 'desc-active'">{{ item.desc }}</div>
             </div>
@@ -30,9 +28,7 @@
           <template v-for="(item, index) in twoInfo.list">
             <div class="item" :key="item.id" @mousemove="moveItemTwo(index, item.imgUrl)">
               <div v-if="currentTwoIndex !== index" class="number">{{ index + 1 }}</div>
-              <div v-else class="number-wai">
-                <div class="number-nei">{{ index + 1 }}</div>
-              </div>
+              <div v-else class="number-wai">{{ index + 1 }}</div>
               <div class="title" :class="currentTwoIndex === index && 'title-active'">{{ item.title }}</div>
               <div class="desc" :class="currentTwoIndex === index && 'desc-active'">{{ item.desc }}</div>
             </div>
@@ -150,23 +146,14 @@ export default {
           width: 40px;
           height: 40px;
           line-height: 40px;
-          border: 1px solid #CCE5FE;
+          background-color: #007EFB;
           font-size: 30px;
           font-family: MicrosoftYaHeiSemibold;
           margin-right: 16px;
           text-align: center;
           box-sizing: border-box;
-
-          .number-nei {
-            color: #FFFFFF;
-            width: 30px;
-            height: 30px;
-            margin: 4px;
-            box-sizing: border-box;
-            line-height: 30px;
-            text-align: center;
-            background-color: #007EFB;
-          }
+          box-shadow: 0 0 0 4px #CCE5FE;
+          color: #FFFFFF;
         }
 
         .title {

@@ -70,7 +70,7 @@ export default {
           {
             id: nanoid(8),
             name: '...',
-            icon: require('~/static/image/home/icon/yuanxiao.png'),
+            icon: require('~/static/image/home/icon/more.png'),
           },
         ],
         systemImg: require('~/static/image/home/school.png'),

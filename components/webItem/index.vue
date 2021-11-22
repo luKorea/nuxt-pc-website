@@ -1,6 +1,7 @@
 <template>
-  <div class="item-container">
+  <div class="item-container" :style="{backgroundColor: bgColor}">
     <div class="common-title text-center">{{ info.title }}</div>
+    <div class="common-tip text-center" v-if="info.tip">{{ info.tip }}</div>
     <div class="list">
       <template v-for="(item, index) in info.list">
         <div class="item" :key="item.id">
@@ -18,6 +19,10 @@
 export default {
   name: "index",
   props: {
+    bgColor: {
+      type: String,
+      default: '#FFFFFF'
+    },
     info: {
       type: Object,
       default: () => {},
@@ -75,6 +80,7 @@ export default {
         color: #007EFB;
         line-height: 65px;
       }
+
       .desc {
         width: 248px;
         font-size: 16px;

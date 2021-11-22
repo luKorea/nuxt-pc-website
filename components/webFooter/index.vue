@@ -14,7 +14,10 @@
         <div class="footer-third-party">
           <template v-if="linkToWebsite && linkToWebsite.length > 0">
             <div class="link-wrap">
-              <span class="item" v-for="item in linkToWebsite" :key="item.id">{{ item.title }}</span>
+              <span class="item"
+                    v-for="item in linkToWebsite"
+                    @click="goDetail(item.src)"
+                    :key="item.id">{{ item.title }}</span>
             </div>
           </template>
         </div>
@@ -55,35 +58,39 @@ export default {
       linkToWebsite: [
         {
           id: nanoid(12),
-          src: 'https://www.baidu.com',
+          src: '/webService/careersheApp',
           title: '千职鹤APP',
         },
         {
           id: nanoid(12),
-          src: 'https://www.baidu.com',
+          src: '/webArticle',
           title: '文章资讯',
         },
         {
           id: nanoid(12),
-          src: 'https://www.baidu.com',
+          src: '/webService/schoolSystem',
           title: '学校生涯教育平台',
         },
         {
           id: nanoid(12),
-          src: 'https://www.baidu.com',
+          src: '/webAbout/description',
           title: '关于我们',
         },
         {
           id: nanoid(12),
-          src: 'https://www.baidu.com',
+          src: '/webService/consultingPlanning',
           title: '生涯规划1对1咨询',
         },
       ],
     }
   },
-  mounted () {
-    console.log(window.zhuge, 'zhuge')
-  }
+  methods: {
+    goDetail (url) {
+      this.$router.push({
+        path: url,
+      })
+    },
+  },
 }
 </script>
 
@@ -147,6 +154,7 @@ export default {
         align-items: center;
         flex-wrap: wrap;
         width: 300px;
+
         .item {
           margin-right: 20px;
           margin-bottom: 54px;
@@ -154,6 +162,7 @@ export default {
           font-family: MicrosoftYaHei;
           color: #FFFFFF;
           cursor: pointer;
+
           &:last-child {
             margin-bottom: 0;
           }

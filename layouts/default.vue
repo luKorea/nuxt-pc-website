@@ -7,11 +7,13 @@
 
 <script>
 import websiteFooter from '~/components/webFooter'
+
 export default {
   name: "default",
   components: {
     websiteFooter,
   },
+
 }
 </script>
 

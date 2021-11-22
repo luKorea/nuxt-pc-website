@@ -4,7 +4,7 @@
 
     <div class="dynamic-list">
       <template v-for="item in list">
-        <div class="list-item" :title="item.title" :key="item._id">
+        <div class="list-item" :title="item.title" :key="item._id" @click="goDetail(item._id)">
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
             <span class="title">{{ item.title }}</span>
@@ -30,6 +30,11 @@ export default {
       default: () => []
     }
   },
+  methods: {
+    goDetail (id) {
+      this.$emit('goDetail', id)
+    }
+  }
 }
 </script>
 
@@ -42,7 +47,7 @@ export default {
   margin: 0 auto;
   width: 100%;
   height: 786px;
-  background-image: url("../../../static/image/home/home-dynamic-banner.png");
+  background-image: url("static/image/home/home-dynamic-banner.png");
   .news-title {
     font-size: 36px;
     font-family: MicrosoftYaHeiSemibold;
