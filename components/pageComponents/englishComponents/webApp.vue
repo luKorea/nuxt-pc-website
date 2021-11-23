@@ -30,6 +30,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "webApp",
@@ -43,52 +44,52 @@ export default {
             id: nanoid(8),
             name1: 'assessment',
             name2: 'center',
-            icon: require('~/static/image/home/icon/ceping.png'),
+            icon: IMG_BASE_URL + '/web-img/home/ceping.png',
           },
           {
             id: nanoid(8),
             name1: 'Professional',
             name2: 'Encyclopedia',
-            icon: require('~/static/image/home/icon/zhiye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhiye.png',
           },
           {
             id: nanoid(8),
             name1: 'Professional',
             name2: 'interview',
-            icon: require('~/static/image/home/icon/zhuanfang.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhuanfang.png',
           },
           {
             id: nanoid(8),
             name1: 'Community',
             name2: 'Q & A',
-            icon: require('~/static/image/home/icon/shequ.png'),
+            icon: IMG_BASE_URL + '/web-img/home/shequ.png',
           },
           {
             id: nanoid(8),
             name1: 'Voluntary',
             name2: 'filling',
-            icon: require('~/static/image/home/icon/zhiyuan.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhiyuan.png',
           },
           {
             id: nanoid(8),
             name1: 'Subject',
             name2: 'selection query',
-            icon: require('~/static/image/home/icon/xuanke.png'),
+            icon: IMG_BASE_URL + '/web-img/home/xuanke.png',
           },
           {
             id: nanoid(8),
             name1: 'Professional',
             name2: 'library',
-            icon: require('~/static/image/home/icon/zhuanye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhuanye.png',
           },
           {
             id: nanoid(8),
             name1: 'College',
             name2: 'Library',
-            icon: require('~/static/image/home/icon/yuanxiao.png'),
+            icon: IMG_BASE_URL + '/web-img/home/yuanxiao.png',
           },
         ],
-        appImg: require('~/static/image/home/APP.png'),
+        appImg: IMG_BASE_URL + '/web-img/home/App.png',
       },
     }
   },

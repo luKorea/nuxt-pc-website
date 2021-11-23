@@ -79,6 +79,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "webHeader",
@@ -86,8 +87,8 @@ export default {
     return {
       showFixedNavBar: false,
       activeIndex: '/',
-      defaultLogo: require('~/static/image/common/logo.png'),
-      colorLogo: require('~/static/image/common/color-logo.png'),
+      defaultLogo: IMG_BASE_URL + '/web-img/common/logo.png',
+      colorLogo: IMG_BASE_URL + '/web-img/common/color-logo.png',
       link: [
         {
           id: nanoid(),

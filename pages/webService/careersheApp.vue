@@ -44,7 +44,7 @@ import WebHeader from '~/components/webHeader'
 import WebAppFun from '~/components/pageComponents/serviceAppComponents/webAppFun'
 import WebVideo from '~/components/webVideo'
 import WebItem from '~/components/webItem'
-import { androidAndWindowDownload, randomId } from '~/utils'
+import { androidAndWindowDownload, IMG_BASE_URL, randomId } from '~/utils'
 
 export default {
   name: "careersheApp",
@@ -57,26 +57,26 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      logo: require('~/static/image/common/color-logo.png'),
-      androidIcon: require('static/image/common/android-icon.png'),
-      iosIcon: require('static/image/common/ios-icon.png'),
-      codeIcon: require('static/image/common/code.png'),
+      logo: IMG_BASE_URL + '/web-img/common/color-logo.png',
+      androidIcon: IMG_BASE_URL + '/web-img/common/android-icon.png',
+      iosIcon: IMG_BASE_URL + '/web-img/common/ios-icon.png',
+      codeIcon: IMG_BASE_URL + '/web-img/common/code.png',
       schoolInfo: {
         title: '高中时期—生涯困惑',
         list: [
           {
             id: randomId(),
             title: '面对新高考如何选科',
-            icon: require('static/image/service/app/xuanke.png'),
+            icon: IMG_BASE_URL + '/web-img/service/app/xuanke.png',
           },
           {
             id: randomId(),
             title: '该怎样选择高考志愿',
-            icon: require('static/image/service/app/zhiyuan.png'),
+            icon: IMG_BASE_URL + '/web-img/service/app/zhiyuan.png',
           }, {
             id: randomId(),
             title: '未来要从事什么职业',
-            icon: require('static/image/service/app/zhiye.png'),
+            icon: IMG_BASE_URL + '/web-img/service/app/zhiye.png',
           },
         ],
       },
@@ -105,7 +105,7 @@ export default {
   .content {
     width: 100%;
     height: 900px;
-    background-image: url("static/image/service/app-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/service/app-banner.png");
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;

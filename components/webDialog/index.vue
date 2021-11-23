@@ -42,7 +42,7 @@
 import { randomId } from '~/utils'
 
 export default {
-  name: "dialog",
+  name: "webDialog",
   props: {
     title: {
       type: String,

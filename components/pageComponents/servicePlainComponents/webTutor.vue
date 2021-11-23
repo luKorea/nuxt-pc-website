@@ -6,7 +6,7 @@
         <div class="type-item"
              @mouseenter="changeShowData(index)"
              @mouseleave="changeHideData(index)"
-             :style="{backgroundImage: 'url(' + item.avatarUrl + ')'}"
+             :style="{backgroundImage: 'url(' + item.avatarUrl + ')', backgroundSize: 'cover'}"
         >
           <div class="type-title">
             <div class="name" style="margin-right: 8px">{{ item.chineseName }}</div>
@@ -85,17 +85,16 @@ export default {
         {
           id: randomId(),
           showAvatar: true,
-          chineseName: '王恩仰',
-          englishName: 'IF君',
-          avatarUrl: 'https://www.careershe.com/images/shuaige-1x.png',
+          chineseName: '李兆辉',
+          englishName: 'Joe',
+          avatarUrl: 'https://www.careershe.com/images/joe-1x.png',
           tip: [
-            '易赋创始人兼CREO',
-            '腾讯生态圈创投架构师',
-            '混沌大学创业实战营',
-            '腾讯众创空间、香港大学特聘私董教练',
-            '创业脱口秀《IF TALK》制片人兼总导演',
-            '北京外国语大学，同济大学，深圳大学特聘企业导师',
-            '与黄晓明，杨幂，蔡徐坤等明星受邀人民日报“你好青年”专访并上微博热搜',
+            '前上市教育机构政策研究主任',
+            '前中国邮政集团技术工程师',
+            '新精英生涯规划师',
+            '10年教育机构从业经验',
+            '8年高考志愿规划经验',
+            '广东工业大学计算机学士',
           ],
         },
       ],

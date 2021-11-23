@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { IMG_BASE_URL } from '~/utils'
+
 export default {
   name: "webAbout",
   data () {
@@ -16,7 +18,7 @@ export default {
       aboutInfo: {
         title: '——— About Careershe ———',
         desc: 'Careershe is a startup focused on helping students between age 15-25 to learn about world of work and guide them in major life decisions – E.g. choosing university degree specialization. Bringing in from latest international research in of career development methodologies, Careershe hopes to help Chinese students find their desired careers.',
-        img: require('~/static/image/english/english-about.png'),
+        img: IMG_BASE_URL + '/web-img/english/english-about.png',
       },
     }
   },

@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import { companyInfo } from '~/utils'
+
 export default {
   name: "customer",
   data () {
     return {
-      qrcode: require('~/static/image/common/qrcode.png'),
+      qrcode: companyInfo.serviceQrcode,
     }
   },
 }
@@ -27,16 +29,19 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .img {
     width: 300px;
     height: 300px;
     margin-bottom: 20px;
+
     img {
       width: 100%;
       height: 100%;
       background-size: 100% 100%;
     }
   }
+
   .btn-customer {
     font-size: 18px;
     font-family: MicrosoftYaHeiSemibold;

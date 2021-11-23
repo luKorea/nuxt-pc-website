@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { IMG_BASE_URL } from '~/utils'
+
 export default {
   name: "webProcess",
   props: {
@@ -27,7 +29,7 @@ export default {
   },
   data () {
     return {
-      arrowImg: require('static/image/service/system/system-arrow.png'),
+      arrowImg: IMG_BASE_URL + '/web-img/service/system/system-arrow.png',
     }
   },
   methods: {

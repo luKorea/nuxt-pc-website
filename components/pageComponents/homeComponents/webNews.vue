@@ -47,7 +47,7 @@ export default {
   margin: 0 auto;
   width: 100%;
   height: 786px;
-  background-image: url("static/image/home/home-dynamic-banner.png");
+  background-image: url("https://www.careershe.com/images/web-img/home/home-dynamic-banner.png");
   .news-title {
     font-size: 36px;
     font-family: MicrosoftYaHeiSemibold;

@@ -93,13 +93,13 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 
 .pagination-wrap {
   width: 1240px;
   margin: 0 auto;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding-bottom: 88px;
 

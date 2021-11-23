@@ -27,7 +27,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
-
+import { IMG_BASE_URL } from '~/utils'
 export default {
   name: "webSystem",
   data () {
@@ -40,52 +40,52 @@ export default {
             id: nanoid(8),
             name1: 'Student selection',
             name2: 'and collection',
-            icon: require('~/static/image/home/icon/ceping.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/nan.png',
           },
           {
             id: nanoid(8),
             name1: 'assessment',
             name2: 'center',
-            icon: require('~/static/image/home/icon/zhiye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/ceping.png',
           },
           {
             id: nanoid(8),
             name1: 'Career statistical',
             name2: 'analysis',
-            icon: require('~/static/image/home/icon/zhuanfang.png'),
+            icon: IMG_BASE_URL + '/web-img/tongji.png',
           },
           {
             id: nanoid(8),
             name1: 'Professional',
             name2: 'Encyclopedia',
-            icon: require('~/static/image/home/icon/shequ.png'),
+            icon: IMG_BASE_URL + '/web-img/zhiyebaike.png',
           },
           {
             id: nanoid(8),
             name1: 'Subject selection',
             name2: 'query',
-            icon: require('~/static/image/home/icon/zhiyuan.png'),
+            icon: IMG_BASE_URL + '/web-img/gaokao.png',
           },
           {
             id: nanoid(8),
             name1: 'College',
             name2: 'Library',
-            icon: require('~/static/image/home/icon/xuanke.png'),
+            icon: IMG_BASE_URL + '/web-img/yuanxiao.png',
           },
           {
             id: nanoid(8),
             name1: 'Professional',
             name2: 'library',
-            icon: require('~/static/image/home/icon/zhuanye.png'),
+            icon: IMG_BASE_URL + '/web-img/zhuanye.png',
           },
           {
             id: nanoid(8),
             name1: '...',
             name2: '',
-            icon: require('~/static/image/home/icon/yuanxiao.png'),
+            icon: IMG_BASE_URL + '/web-img/more.png',
           },
         ],
-        systemImg: require('~/static/image/home/school.png'),
+        systemImg: IMG_BASE_URL + '/web-img/home/school.png',
       },
     }
   },
@@ -133,9 +133,11 @@ export default {
             vertical-align: top;
           }
         }
+
         .text-wrap {
           display: flex;
           flex-direction: column;
+
           .text {
             font-size: 16px;
             font-family: MicrosoftYaHei;

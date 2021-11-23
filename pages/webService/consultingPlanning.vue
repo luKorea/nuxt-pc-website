@@ -32,7 +32,7 @@ import WebDialog from '~/components/webDialog'
 import WebPlatform from '~/components/pageComponents/servicePlainComponents/webPlatform'
 import WebCustomer from '~/components/pageComponents/servicePlainComponents/webCustomer'
 import WebTutor from '~/components/pageComponents/servicePlainComponents/webTutor'
-import { successTip } from '~/utils'
+import { IMG_BASE_URL, successTip } from '~/utils'
 
 export default {
   name: "consultingPlanning",
@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      logo: require('~/static/image/common/color-logo.png'),
+      logo: IMG_BASE_URL + '/web-img/common/color-logo.png',
       plainInfo: {
         title: '生涯规划咨询',
         desc: '求职指导、高中生涯辅导、职业规划、私人定制',
@@ -72,7 +72,7 @@ export default {
   .content {
     width: 100%;
     height: 900px;
-    background-image: url("static/image/service/servie-plain-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/service/servie-plain-banner.png");
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;

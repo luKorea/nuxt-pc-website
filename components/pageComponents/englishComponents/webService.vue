@@ -27,6 +27,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "webService",
@@ -67,7 +68,7 @@ export default {
             name2: 'career counseling',
           },
         ],
-        serviceImg: require('~/static/image/home/guihua.png'),
+        serviceImg: IMG_BASE_URL + '/web-img/home/guihua.png',
       },
     }
   },

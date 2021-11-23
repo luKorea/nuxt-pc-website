@@ -31,7 +31,7 @@ import WebSystem from '~/components/pageComponents/homeComponents/webSystem'
 import WebService from '~/components/pageComponents/homeComponents/webService'
 import WebNews from '~/components/pageComponents/homeComponents/webNews'
 import WebAbout from '~/components/pageComponents/homeComponents/webAbout'
-import { errorTip, successTip } from '~/utils'
+import { errorTip, IMG_BASE_URL, successTip } from '~/utils'
 import WebDialog from '~/components/webDialog'
 
 export default {
@@ -50,7 +50,7 @@ export default {
       dialogVisible: false,
       dialogTitle: '预约试用',
       dialogType: '',
-      bannerImg: require('~/static/image/home/home-banner.png'),
+      bannerImg: IMG_BASE_URL +  '/web-img/home/home-banner.png',
     }
   },
   mounted () {

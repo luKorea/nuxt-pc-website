@@ -154,7 +154,7 @@ export default {
         width: 420px;
         display: flex;
         justify-content: center;
-        align-items: end;
+        align-items: flex-end;
 
         .title-wrap {
           display: flex;

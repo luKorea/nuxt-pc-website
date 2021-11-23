@@ -43,7 +43,7 @@ export default {
     .down-img-wrap {
       height: 900px;
       width: 100%;
-      background-image: url("static/image/english/english-banner.png");
+      background-image: url("https://www.careershe.com/images/web-img/english/english-banner.png");
       background-size: 100% 100%;
     }
 }

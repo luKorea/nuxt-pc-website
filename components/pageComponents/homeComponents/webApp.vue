@@ -24,6 +24,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "webApp",
@@ -36,45 +37,45 @@ export default {
           {
             id: nanoid(8),
             name: '测评中心',
-            icon: require('~/static/image/home/icon/ceping.png'),
+            icon: IMG_BASE_URL + '/web-img/home/ceping.png',
           },
           {
             id: nanoid(8),
             name: '职业百科',
-            icon: require('~/static/image/home/icon/zhiye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhiye.png',
           },
           {
             id: nanoid(8),
             name: '职业专访',
-            icon: require('~/static/image/home/icon/zhuanfang.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhuanfang.png',
           },
           {
             id: nanoid(8),
             name: '社区问答',
-            icon: require('~/static/image/home/icon/shequ.png'),
+            icon: IMG_BASE_URL + '/web-img/home/shequ.png',
           },
           {
             id: nanoid(8),
             name: '志愿填报',
-            icon: require('~/static/image/home/icon/zhiyuan.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhiyuan.png',
           },
           {
             id: nanoid(8),
             name: '选科查询',
-            icon: require('~/static/image/home/icon/xuanke.png'),
+            icon: IMG_BASE_URL + '/web-img/home/xuanke.png',
           },
           {
             id: nanoid(8),
             name: '专业库',
-            icon: require('~/static/image/home/icon/zhuanye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/zhuanye.png',
           },
           {
             id: nanoid(8),
             name: '院校库',
-            icon: require('~/static/image/home/icon/yuanxiao.png'),
+            icon: IMG_BASE_URL + '/web-img/home/yuanxiao.png',
           },
         ],
-        appImg: require('~/static/image/home/APP.png'),
+        appImg: IMG_BASE_URL + '/web-img/home/App.png',
       },
     }
   },

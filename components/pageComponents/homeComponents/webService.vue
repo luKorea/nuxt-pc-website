@@ -23,6 +23,7 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "webService",
@@ -30,7 +31,7 @@ export default {
     return {
       serviceInfo: {
         title: '生涯规划咨询',
-        desc: '生涯专家1对1个性化打造生涯发展方案',
+        desc: '生涯专家1对1打造生涯发展方案，帮你摆脱生涯困境、重塑自我',
         serviceList: [
           {
             id: nanoid(8),
@@ -57,7 +58,7 @@ export default {
             name: '高中未来生涯咨询',
           },
         ],
-        serviceImg: require('~/static/image/home/guihua.png'),
+        serviceImg: IMG_BASE_URL + '/web-img/home/guihua.png',
       },
     }
   },

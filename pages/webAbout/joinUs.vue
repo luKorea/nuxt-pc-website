@@ -58,7 +58,7 @@
 import websiteHeader from '~/components/webHeader'
 import webMap from '~/components/webMap'
 import { nanoid } from 'nanoid'
-import { companyInfo } from '~/utils'
+import { companyInfo, IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "joinUs",
@@ -69,7 +69,7 @@ export default {
   data () {
     return {
       companyInfo: companyInfo,
-      joinNothing: require('~/static/image/about/join-nothing.png'),
+      joinNothing: IMG_BASE_URL + '/web-img/about/join-nothing.png',
       list: [
         {
           id: nanoid(8),
@@ -118,7 +118,7 @@ export default {
 <style scoped lang="less">
 .join-container {
   .content {
-    background-image: url("static/image/about/join-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/about/join-banner.png");
     background-size: 100% 100%;
     width: 100%;
     height: 640px;

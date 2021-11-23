@@ -58,7 +58,7 @@ export default {
 <style scoped lang="less">
 .contact-container {
   .content {
-    background-image: url("static/image/about/about-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/about/about-banner.png");
     background-size: 100% 100%;
     width: 100%;
     height: 900px;

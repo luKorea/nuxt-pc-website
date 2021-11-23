@@ -24,11 +24,11 @@
 
         <div class="footer-qrcode">
           <div class="qrcode-info" style="margin-right: 50px">
-            <div class="img"><img :src="publicQrcode" alt=""/></div>
+            <div class="img"><img :src="companyInfo.officialAccount" alt=""/></div>
             <div class="title">公众号</div>
           </div>
           <div class="qrcode-info">
-            <div class="img"><img :src="serviceQrcode" alt=""/></div>
+            <div class="img"><img :src="companyInfo.serviceQrcode" alt=""/></div>
             <div class="title">客服</div>
           </div>
         </div>
@@ -44,16 +44,14 @@
 </template>
 
 <script>
-import { companyInfo } from '~/utils'
+import { companyInfo, IMG_BASE_URL } from '~/utils'
 import { nanoid } from 'nanoid'
 
 export default {
   name: "webFooter",
   data () {
     return {
-      logo: require('~/static/image/common/white-logo.png'),
-      publicQrcode: require('~/static/image/common/qrcode.png'),
-      serviceQrcode: require('~/static/image/common/qrcode.png'),
+      logo: IMG_BASE_URL + '/web-img/common/logo.png',
       companyInfo: companyInfo,
       linkToWebsite: [
         {

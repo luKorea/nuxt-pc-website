@@ -43,15 +43,16 @@
 
 <script>
 import WebHeader from '~/components/webHeader'
+import { IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "index",
   components: { WebHeader },
   data () {
     return {
-      qrcode: 'https://www.careershe.com/images/mobile_download_url.png',
-      androidIcon: require('~/static/image/common/android-icon.png'),
-      iosIcon: require('~/static/image/common/ios-icon.png'),
+      qrcode: IMG_BASE_URL + '/mobile_download_url.png',
+      androidIcon: IMG_BASE_URL + '/web-img/common/android-icon.png',
+      iosIcon: IMG_BASE_URL + '/web-img/common/ios-icon.png',
     }
   },
 }
@@ -62,7 +63,7 @@ export default {
   .content {
     height: 900px;
     width: 100%;
-    background-image: url("static/image/download/donwload-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/download/donwload-banner.png");
     background-size: 100% 100%;
 
     .tip-wrap {

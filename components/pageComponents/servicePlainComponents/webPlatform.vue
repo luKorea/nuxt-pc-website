@@ -27,6 +27,8 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
+
 export default {
   name: "platform",
   data () {
@@ -38,28 +40,28 @@ export default {
           title: '求职指导',
           showItem: true,
           tip: ['专业HR一对一指导', '简历定制', '面试辅导', '资深企业HR团队模拟面试'],
-          bgImg: require('~/static/image/service/zhidao.png'),
+          bgImg: IMG_BASE_URL + '/web-img/service/zhidao.png',
         },
         {
           id: nanoid(8),
           title: '高中生辅导',
           showItem: true,
           tip: ['新高考指导', '志愿填报', '学生幸福感咨询', '未来生涯指导'],
-          bgImg: require('~/static/image/service/fudao.png'),
+          bgImg: IMG_BASE_URL + '/web-img/service/fudao.png',
         },
         {
           id: nanoid(8),
           title: '职业规划',
           showItem: true,
           tip: ['基于千职鹤互联网职业规划', '专业评测系统', '国际认证职业规划全程指导', '个性化生涯规划方案'],
-          bgImg: require('~/static/image/service/guihua.png'),
+          bgImg: IMG_BASE_URL + '/web-img/service/guihua.png',
         },
         {
           id: nanoid(8),
           title: '私人定制',
           showItem: true,
           tip: ['个人竞争力评估', '行业导师', '求职社交礼仪指导', '实习机会推荐', '简历内推'],
-          bgImg: require('~/static/image/service/dingzhi.png'),
+          bgImg: IMG_BASE_URL + '/web-img/service/dingzhi.png',
         },
       ],
     }

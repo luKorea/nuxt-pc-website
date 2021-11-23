@@ -24,6 +24,8 @@
 
 <script>
 import { nanoid } from 'nanoid'
+import { IMG_BASE_URL } from '~/utils'
+
 export default {
   name: "webSystem",
   data () {
@@ -35,56 +37,56 @@ export default {
           {
             id: nanoid(8),
             name: '学生选科征集',
-            icon: require('~/static/image/home/icon/ceping.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/nan.png',
           },
           {
             id: nanoid(8),
             name: '测评中心',
-            icon: require('~/static/image/home/icon/zhiye.png'),
+            icon: IMG_BASE_URL + '/web-img/home/ceping.png',
           },
           {
             id: nanoid(8),
             name: '生涯统计分析',
-            icon: require('~/static/image/home/icon/zhuanfang.png'),
+            icon: IMG_BASE_URL + '/web-img/tongji.png',
           },
           {
             id: nanoid(8),
             name: '职业百科',
-            icon: require('~/static/image/home/icon/shequ.png'),
+            icon: IMG_BASE_URL + '/web-img/zhiyebaike.png',
           },
           {
             id: nanoid(8),
             name: '新高考选科查询',
-            icon: require('~/static/image/home/icon/zhiyuan.png'),
+            icon: IMG_BASE_URL + '/web-img/gaokao.png',
           },
           {
             id: nanoid(8),
             name: '院校库',
-            icon: require('~/static/image/home/icon/xuanke.png'),
+            icon: IMG_BASE_URL + '/web-img/yuanxiao.png',
           },
           {
             id: nanoid(8),
             name: '专业库',
-            icon: require('~/static/image/home/icon/zhuanye.png'),
+            icon: IMG_BASE_URL + '/web-img/zhuanye.png',
           },
           {
             id: nanoid(8),
             name: '...',
-            icon: require('~/static/image/home/icon/more.png'),
+            icon: IMG_BASE_URL + '/web-img/more.png',
           },
         ],
-        systemImg: require('~/static/image/home/school.png'),
+        systemImg: IMG_BASE_URL + '/web-img/home/school.png',
       },
     }
   },
   methods: {
-    changeVisible() {
+    changeVisible () {
       this.$emit('changeVisible', 'school')
     },
-    goPage() {
+    goPage () {
       this.$emit('goPage', 'school')
-    }
-  }
+    },
+  },
 }
 </script>
 

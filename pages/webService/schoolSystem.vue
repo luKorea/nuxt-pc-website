@@ -38,7 +38,7 @@ import WebItem from '~/components/webItem'
 import WebSchool from '~/components/pageComponents/serviceSystemComponents/webSchool'
 import WebProcess from '~/components/pageComponents/serviceSystemComponents/webProcess'
 import WebForm from '~/components/pageComponents/serviceSystemComponents/webForm'
-import { randomId, successTip, errorTip } from '~/utils'
+import { randomId, successTip, errorTip, IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "careersheApp",
@@ -54,7 +54,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      logo: require('~/static/image/common/color-logo.png'),
+      logo: IMG_BASE_URL + '/web-img/common/color-logo.png',
       selectOurInfo: {
         title: '为什么选择我们',
         list: [
@@ -62,18 +62,18 @@ export default {
             id: randomId(),
             title: '权威',
             desc: '职业资讯源于真实调研，由专业人士进行指导',
-            icon: require('static/image/service/system/quanwei.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/quanwei.png',
           },
           {
             id: randomId(),
             title: '全面',
             desc: '团队专家来源于英国、美国、新加坡，结合中国先进理论实现多元化',
-            icon: require('static/image/service/system/quanmian.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/quanmian.png',
           }, {
             id: randomId(),
             title: '定制',
             desc: '为客户打造个性化服务方案，实现校园生涯定制化需求',
-            icon: require('static/image/service/system/dingzhi.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/dingzhi.png',
           },
         ],
       },
@@ -83,16 +83,16 @@ export default {
           {
             id: randomId(),
             title: '学生选科征集信息难收集',
-            icon: require('static/image/service/system/nan.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/nan.png',
           },
           {
             id: randomId(),
             title: '对学生信息了解太少',
-            icon: require('static/image/service/system/shao.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/shao.png',
           }, {
             id: randomId(),
             title: '难以开展特色生涯规划课',
-            icon: require('static/image/service/system/ke.png'),
+            icon: IMG_BASE_URL + '/web-img/service/system/ke.png',
           },
         ],
       },
@@ -139,7 +139,7 @@ export default {
   .content {
     width: 100%;
     height: 900px;
-    background-image: url("static/image/service/system-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/service/system-banner.png");
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;

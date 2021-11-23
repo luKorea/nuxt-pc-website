@@ -50,6 +50,7 @@
 import websiteHeader from '~/components/webHeader'
 import webPagination from '~/components/webPagination/index';
 import { nanoid } from 'nanoid'
+import { companyInfo, IMG_BASE_URL } from '~/utils'
 
 export default {
   name: "index",
@@ -60,58 +61,9 @@ export default {
   data () {
     return {
       currentIndex: 0,
-      qrcode: require('~/static/image/common/qrcode.png'),
+      qrcode: companyInfo.officialAccount,
       itemList: [],
-      list: [
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-        {
-          id: nanoid(8),
-          title: '文章标题文章标题文章标题文章标题文章标题文章标题文章标题',
-          time: new Date().toLocaleDateString(),
-          img: require('static/image/article/test.png'),
-        },
-      ],
+      list: [],
       params: {
         pageSize: 10,
         pageNumber: 0,
@@ -177,7 +129,7 @@ export default {
 <style scoped lang="less">
 .article-container {
   .content {
-    background-image: url("static/image/article/article-banner.png");
+    background-image: url("https://www.careershe.com/images/web-img/atricle/article-banner.png");
     background-size: 100% 100%;
     width: 100%;
     height: 640px;

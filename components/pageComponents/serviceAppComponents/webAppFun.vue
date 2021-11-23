@@ -12,7 +12,7 @@
 
 <script>
 import WebList from '~/components/webList'
-import { randomId } from '~/utils'
+import { IMG_BASE_URL, randomId } from '~/utils'
 
 export default {
   name: "webAppFun",
@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      appServiceImg: require('static/image/service/app/app-service.png'),
+      appServiceImg: IMG_BASE_URL + '/web-img/service/app/app-service.png',
       oneInfo: {
         title: '生涯发展',
         btnFont: '立即下载',
