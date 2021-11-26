@@ -7,8 +7,8 @@
       <div class="nav-wrap" id="nav">
         <!-- LOGO 插槽 -->
         <slot name="logo">
-          <div class="logo">
-            <img :src="defaultLogo" alt="">
+          <div class="logo" @click="goToHome">
+            <img :src="defaultLogo" alt="千职鹤">
           </div>
         </slot>
         <!--link固定链接-->
@@ -17,23 +17,19 @@
                    router
                    class="nav-link"
                    mode="horizontal" @select="handleSelect">
-            <el-menu-item index="/">首页</el-menu-item>
-            <el-submenu index="2">
-              <template slot="title">产品与服务</template>
-              <el-menu-item index="/webService/careersheApp">千职鹤APP</el-menu-item>
-              <el-menu-item index="/webService/schoolSystem">校园生涯平台</el-menu-item>
-              <el-menu-item index="/webService/consultingPlanning">生涯咨询规划</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/webArticle">生涯资讯</el-menu-item>
-            <el-submenu index="3">
-              <template slot="title">关于我们</template>
-              <el-menu-item index="/webAbout/description">企业简介</el-menu-item>
-              <el-menu-item index="/webAbout/dynamic">企业动态</el-menu-item>
-              <el-menu-item index="/webAbout/joinUs">加入我们</el-menu-item>
-              <el-menu-item index="/webAbout/contact">联系我们</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/webDownload">下载APP</el-menu-item>
-            <el-menu-item index="/webEnglish">English</el-menu-item>
+            <template v-for="value in linkList">
+              <el-submenu v-if="value.children && value.children.length > 0" :index="value.href" :key="value.id">
+                <template slot="title">{{ value.name }}</template>
+                <template v-for="item in value.children">
+                  <el-menu-item :index="item.href" :key="item.id">
+                    <span slot="title" :index="item.href">{{ item.name }}</span>
+                  </el-menu-item>
+                </template>
+              </el-submenu>
+              <el-menu-item v-else :index="value.href" :key="value.id">
+                <span slot="title" :index="value.href">{{ value.name }}</span>
+              </el-menu-item>
+            </template>
           </el-menu>
         </template>
       </div>
@@ -43,8 +39,8 @@
       <div class="nav-wrap">
         <!-- LOGO 插槽 -->
         <slot name="logo">
-          <div class="logo">
-            <img :src="colorLogo" alt="">
+          <div class="logo" @click="goToHome">
+            <img :src="colorLogo" alt="千职鹤">
           </div>
         </slot>
         <!--link固定链接-->
@@ -53,23 +49,19 @@
                    router
                    class="nav-link"
                    mode="horizontal" @select="handleSelect">
-            <el-menu-item index="/">首页</el-menu-item>
-            <el-submenu index="2">
-              <template slot="title">产品与服务</template>
-              <el-menu-item index="/webService/careersheApp">千职鹤APP</el-menu-item>
-              <el-menu-item index="/webService/schoolSystem">校园生涯平台</el-menu-item>
-              <el-menu-item index="/webService/consultingPlanning">生涯咨询规划</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/webArticle">生涯资讯</el-menu-item>
-            <el-submenu index="3">
-              <template slot="title">关于我们</template>
-              <el-menu-item index="/webAbout/description">企业简介</el-menu-item>
-              <el-menu-item index="/webAbout/dynamic">企业动态</el-menu-item>
-              <el-menu-item index="/webAbout/joinUs">加入我们</el-menu-item>
-              <el-menu-item index="/webAbout/contact">联系我们</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/webDownload">下载APP</el-menu-item>
-            <el-menu-item index="/webEnglish">English</el-menu-item>
+            <template v-for="value in linkList">
+              <el-submenu v-if="value.children && value.children.length > 0" :index="value.href" :key="value.id">
+                <template slot="title">{{ value.name }}</template>
+                <template v-for="item in value.children">
+                  <el-menu-item :index="item.href" :key="item.id">
+                    <span slot="title" :index="item.href">{{ item.name }}</span>
+                  </el-menu-item>
+                </template>
+              </el-submenu>
+              <el-menu-item v-else :index="value.href" :key="value.id">
+                <span slot="title" :index="value.href">{{ value.name }}</span>
+              </el-menu-item>
+            </template>
           </el-menu>
         </template>
       </div>
@@ -78,51 +70,24 @@
 </template>
 
 <script>
-import { nanoid } from 'nanoid'
+import webMenuItem from '~/components/webMenuItem'
 import { IMG_BASE_URL } from '~/utils'
+import routerLink from '~/utils/routerLink'
 
 export default {
   name: "webHeader",
+  components: {
+    webMenuItem,
+  },
   data () {
     return {
       showFixedNavBar: false,
       activeIndex: '/',
+      article: '/webArticle?pageSize=10&pageNumber=0&index=0&category=""',
+      dynamic: '/webAbout/dynamic?pageNumber=0&pageSize=9',
       defaultLogo: IMG_BASE_URL + '/web-img/common/logo.png',
       colorLogo: IMG_BASE_URL + '/web-img/common/color-logo.png',
-      link: [
-        {
-          id: nanoid(),
-          href: '/',
-          name: '首页',
-        },
-        {
-          id: nanoid(),
-          href: '/webService',
-          name: '产品与服务',
-          children: [],
-        },
-        {
-          id: nanoid(),
-          href: '/webArticle',
-          name: '文章资讯',
-          children: [],
-        },
-        {
-          id: nanoid(),
-          href: '',
-          name: '关于我们',
-        },
-        {
-          id: nanoid(),
-          href: '/webDownload',
-          name: '下载APP',
-        },
-        {
-          id: nanoid(),
-          href: '/webEnglish',
-          name: 'English',
-        },
-      ],
+      linkList: routerLink,
     }
   },
   created () {
@@ -205,10 +170,13 @@ export default {
   color: #FFFFFF;
 }
 
+.nav-container .el-menu--horizontal > .el-submenu .el-submenu__title i {
+  display: none;
+}
 
 </style>
 
-<style scoped lang="less">
+<style lang="less">
 .header-container {
   .nav-container {
     .nav-wrap {
@@ -226,6 +194,7 @@ export default {
         width: 120px;
         height: 48px;
         padding-left: 120px;
+        cursor: pointer;
 
         img {
           width: 100%;
@@ -256,7 +225,7 @@ export default {
 }
 </style>
 
-<style scoped lang="less">
+<style lang="less">
 .fixed-nav {
   position: fixed;
   width: 100%;
@@ -282,6 +251,7 @@ export default {
       width: 120px;
       height: 48px;
       padding-left: 120px;
+      cursor: pointer;
 
       img {
         width: 100%;

@@ -38,9 +38,9 @@
           <div class="list-item" :key="item.id">
             <div class="number-tip">{{ index + 1 }}</div>
             <div class="info-wrap">
-              <div class="title">{{ item.title }}</div>
+              <div class="title">{{ item.name }}</div>
               <div class="tip">招聘要求</div>
-              <div class="desc">{{ item.desc }}</div>
+              <div class="desc">{{ item.demand }}</div>
             </div>
           </div>
         </template>
@@ -58,9 +58,17 @@
 import websiteHeader from '~/components/webHeader'
 import webMap from '~/components/webMap'
 import { nanoid } from 'nanoid'
-import { companyInfo, IMG_BASE_URL } from '~/utils'
+import { companyInfo, IMG_BASE_URL, errorTip } from '~/utils'
 
 export default {
+  head () {
+    return {
+      title: '千职鹤-加入我们',
+      meta: [
+        { hid: 'description', name: 'description', content: this.companyInfo.companyAddress },
+      ],
+    }
+  },
   name: "joinUs",
   components: {
     websiteHeader,
@@ -70,48 +78,15 @@ export default {
     return {
       companyInfo: companyInfo,
       joinNothing: IMG_BASE_URL + '/web-img/about/join-nothing.png',
-      list: [
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-        {
-          id: nanoid(8),
-          title: '岗位名称岗位名称1',
-          desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-        },
-      ],
     }
   },
-  mounted () {
-
+  async asyncData ({ params, app }) {
+    let data = await app.$axios.$get('/officialWebsiteHiring/getOfficialWebsiteHiringList')
+    return {
+      list: data,
+    }
   },
-  methods: {
-    changeClick (index, id) {
-      this.currentIndex = index;
-    },
-  },
+  methods: {},
 }
 </script>
 
@@ -122,6 +97,7 @@ export default {
     background-size: 100% 100%;
     width: 100%;
     height: 640px;
+
     .service-wrap {
       position: absolute;
       left: 340px;
@@ -200,7 +176,7 @@ export default {
         margin-bottom: 50px;
 
         .number-tip {
-          width: 80px;
+          width: 50px;
           height: 34px;
           line-height: 34px;
           text-align: center;

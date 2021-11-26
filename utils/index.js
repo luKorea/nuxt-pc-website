@@ -49,9 +49,10 @@ export const errorTip = (message = '出错了', duration = 3000) => {
 export const randomId = () => nanoid(8);
 
 export const androidAndWindowDownload = () => {
-  window.location.href = "https://www.baidu.com"
+  window.location.href = "https://www.careershe.com/download/careershe.apk"
 }
 
 export const iosDownload = () => {
-  window.location.href = "https://www.taobao.com"
+  window.open('https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662', '_blank')
+  // window.location.href = "https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662"
 }

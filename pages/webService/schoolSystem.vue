@@ -2,7 +2,7 @@
   <div class="careershe-app-container">
     <web-header>
       <template #logo>
-        <div class="logo">
+        <div class="logo" @click="goToHome">
           <img :src="logo" alt="">
         </div>
       </template>
@@ -10,7 +10,7 @@
         <div class="content">
           <div class="info">
             <div class="common-title">{{ plainInfo.title }}</div>
-            <div class="common-desc" style="width: 693px">{{ plainInfo.desc }}</div>
+            <div class="common-desc">{{ plainInfo.desc }}</div>
             <div class="btn-home" @click="changeVisible">
               <div class="btn-down">免费试用</div>
             </div>
@@ -41,6 +41,11 @@ import WebForm from '~/components/pageComponents/serviceSystemComponents/webForm
 import { randomId, successTip, errorTip, IMG_BASE_URL } from '~/utils'
 
 export default {
+  head() {
+    return {
+      title: '千职鹤-校园生涯平台'
+    }
+  },
   name: "careersheApp",
   components: {
     WebHeader,
@@ -117,7 +122,13 @@ export default {
     changeVisible () {
       this.dialogVisible = true;
     },
+    goToHome () {
+      this.$router.push({
+        path: '/',
+      })
+    },
     sendData (data) {
+      if (data.type === '') data.type = '预约使用';
       this.$axios.post('/officialWebsiteFeedback/addOfficialWebsiteFeedback', data).then(res => {
         if (res.errorCode === 200) {
           successTip('咨询成功')
@@ -148,6 +159,7 @@ export default {
 
     .info {
       padding-left: 340px;
+      width: 40%;
     }
 
     .btn-group {

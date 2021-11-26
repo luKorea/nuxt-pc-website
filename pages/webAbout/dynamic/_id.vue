@@ -11,35 +11,25 @@
 
 <script>
 import webSiteHeader from '~/components/webHeader'
-import { errorTip } from '~/utils'
 
 export default {
+  head () {
+    return {
+      title: this.info.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.info.description },
+      ],
+    }
+  },
   name: "detailId",
   components: {
     webSiteHeader,
   },
-  data () {
+  async asyncData ({ params, app }) {
+    let data = await app.$axios.$get(`/dynamicConsulting/getDynamicConsultingById?_id=${params.id}`)
     return {
-      id: '',
-      info: {},
+      info: data,
     }
-  },
-  mounted () {
-    this.id = this.$route.params.id;
-    this.getDetailData(this.id)
-  },
-  methods: {
-    getDetailData (_id) {
-      this.$axios.get(`/dynamicConsulting/getDynamicConsultingById?_id=${_id}`).then(res => {
-        if (res.errorCode === 200) {
-          this.info = res.data;
-        } else {
-          errorTip(res.msg)
-        }
-      }).catch(err => {
-        console.log(err)
-      })
-    },
   },
 }
 </script>
@@ -52,5 +42,9 @@ export default {
   align-items: center;
   margin: 0 auto;
   padding: 80px 0;
+
+  .news-content {
+    width: 1100px;
+  }
 }
 </style>

@@ -19,7 +19,10 @@
     <!--价值观-->
     <web-item :info="valuesInfo" bg-color="#F1F5F8"></web-item>
     <!--发展历程-->
-    <web-development :company-development="companyDevelopment"></web-development>
+    <web-development
+        :company-development="companyDevelopment"
+        :company-development-list="companyDevelopmentList"
+    ></web-development>
     <!--企业荣誉-->
     <web-honor :company-honor="companyHonor"></web-honor>
   </div>
@@ -31,9 +34,18 @@ import WebItem from '~/components/webItem'
 import webIntroduction from '~/components/pageComponents/aboutDescriptionComponents/webIntroduction'
 import webDevelopment from '~/components/pageComponents/aboutDescriptionComponents/webDevelopment'
 import webHonor from '~/components/pageComponents/aboutDescriptionComponents/webHonor'
-import { companyInfo, IMG_BASE_URL, randomId } from '~/utils'
+import { companyInfo, IMG_BASE_URL, randomId, errorTip } from '~/utils'
+import { getArticleItem } from '~/api'
 
 export default {
+  head () {
+    return {
+      title: '千职鹤-企业描述',
+      meta: [
+        { hid: 'description', name: 'description', content: this.companyIntroduction.desc },
+      ],
+    }
+  },
   name: "description",
   components: {
     WebsiteHeader,
@@ -76,16 +88,8 @@ export default {
       companyDevelopment: {
         title: '发展历程',
         tip: 'Development Course',
-        list: [
-          { title: '与广州市番禺实验中学合作', timer: '21Q1' },
-          { title: '广州公司成立', timer: '20Q3' },
-          { title: '进入启迪之星（深圳 ）获得教育类APP备案', timer: '20Q1' },
-          { title: '恒德瑞科技（深圳）有限公司成立', timer: '18Q3' },
-          { title: '获得牛津大学科技创新公司入股', timer: '20Q4' },
-          { title: 'APP用户突破5000', timer: '20Q2' },
-          { title: '千职鹤APP上线', timer: '19Q3' },
-        ],
       },
+      companyDevelopmentList: [],
       companyHonor: {
         title: '企业荣誉',
         tip: 'Enterprise Honor',
@@ -99,6 +103,12 @@ export default {
           '牛津大学科技创新公司在亚洲成立的首家公司',
         ],
       },
+    }
+  },
+  async asyncData ({ params, app }) {
+    let data = await app.$axios.$get('/officialWebsiteDevelopingCourse/getOfficialWebsiteDevelopingCourseList');
+    return {
+      companyDevelopmentList: data,
     }
   },
 }

@@ -12,7 +12,7 @@
         </template>
       </div>
       <div class="btn-home">
-        <div class="btn-down">立即下载</div>
+        <div class="btn-down" @click="downloadApp">立即下载</div>
         <div class="btn-more" @click="goPage">了解更多</div>
       </div>
     </div>
@@ -82,6 +82,9 @@ export default {
   methods: {
     goPage() {
       this.$emit('goPage', 'app')
+    },
+    downloadApp() {
+      this.$emit('download')
     }
   }
 }

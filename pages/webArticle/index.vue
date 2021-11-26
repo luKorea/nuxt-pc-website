@@ -50,78 +50,101 @@
 import websiteHeader from '~/components/webHeader'
 import webPagination from '~/components/webPagination/index';
 import { nanoid } from 'nanoid'
-import { companyInfo, IMG_BASE_URL } from '~/utils'
+import { companyInfo } from '~/utils'
+import urlencode from 'urlencode';
 
 export default {
+  head () {
+    return {
+      title: '千职鹤-生涯资讯',
+    }
+  },
   name: "index",
   components: {
     websiteHeader,
-    webPagination
+    webPagination,
   },
   data () {
     return {
-      currentIndex: 0,
       qrcode: companyInfo.officialAccount,
-      itemList: [],
-      list: [],
-      params: {
-        pageSize: 10,
-        pageNumber: 0,
-        category: '',
-        total: 0
-      },
     }
   },
-  mounted () {
-    this.getArticleItem().then(res => {
-      this.getData(this.params)
-    })
-  },
-  methods: {
-    async getData(params) {
-      let url = `/article/getArticleDetailPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}&category=${params.category}`
-      let response = await this.$axios.get(url);
-      if (response.errorCode === 200) {
-        this.list = response.data.result;
-        this.params.total = response.data.pageResult.total;
+  async asyncData ({ query, app }) {
+    try {
+      let responseItemList = await app.$axios.$get(`/article/getArticleMenu`),
+          currentIndex = +query.index,
+          category = '',
+          params = {
+            pageSize: +query.pageSize,
+            pageNumber: +query.pageNumber,
+            total: +query.total,
+          },
+          list = [];
+      category = responseItemList && responseItemList[currentIndex].category;
+      if (category !== "") {
+        let url = `/article/getArticleDetailPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}&category=${urlencode(
+            category)}`;
+        list = await app.$axios.$get(url);
+        params.total = list.pageResult.total || 0;
       }
-    },
+      return {
+        itemList: responseItemList,
+        list: list.result,
+        params: params,
+        currentIndex: currentIndex,
+        category: category,
+      }
+    } catch (e) {
+      console.log(e, 'error')
+      return {
+        itemList: [],
+        list: [],
+        params: {
+          pageSize: 10,
+          pageNumber: 0,
+          total: 0,
+        },
+        currentIndex: 0,
+        category: '',
+      }
+    }
+  },
+  watchQuery: true,
+  methods: {
     changeClick (index, category) {
       this.currentIndex = index;
-      this.params.category = category;
+      this.category = category;
       this.resetParams();
-      this.getData(this.params);
+      this.queryData(this.params);
     },
-    getArticleItem() {
-      return new Promise((resolve, reject) => {
-        this.$axios.get('/article/getArticleMenu')
-        .then(res => {
-          if (res.errorCode === 200) {
-            this.itemList = res.data;
-            this.params.category = this.itemList[this.currentIndex].category;
-            resolve();
-          } else {
-            reject(res.errMsg)
-          }
-        })
-      })
-    },
-    goDetail(url) {
+    goDetail (url) {
       window.open(url, '_blank')
     },
-    resetParams() {
+    resetParams () {
       this.params.pageSize = 10;
       this.params.pageNumber = 0;
+      this.params.total = 0;
     },
-    handleSizeChange(val) {
+    handleSizeChange (val) {
       this.params.pageSize = val;
-      this.getData(this.params);
+      this.queryData(this.params);
     },
-    handleCurrentChange(val) {
+    handleCurrentChange (val) {
       this.params.pageNumber = val;
-      this.getData(this.params);
+      this.queryData(this.params);
     },
-
+    queryData (params) {
+      this.$router.push({
+        path: '/webArticle',
+        query: {
+          pageSize: +params.pageSize,
+          pageNumber: +params.pageNumber,
+          total: +params.total,
+          index: +this.currentIndex,
+          category: this.category,
+        },
+      })
+    },
   },
 }
 </script>
@@ -133,6 +156,7 @@ export default {
     background-size: 100% 100%;
     width: 100%;
     height: 640px;
+
     .service-wrap {
       position: absolute;
       left: 340px;
@@ -214,25 +238,30 @@ export default {
     align-items: center;
     background-color: #FFFFFF;
     flex-wrap: wrap;
+
     .list-item {
       display: flex;
       justify-content: center;
       margin-bottom: 40px;
       cursor: pointer;
+
       .item-img {
         width: 200px;
         height: 112px;
         margin-right: 20px;
+
         img {
           width: 100%;
           height: 100%;
           vertical-align: center;
         }
       }
+
       .title-wrap {
         display: flex;
         flex-direction: column;
         width: 334px;
+
         .title {
           font-size: 16px;
           font-family: MicrosoftYaHei;
@@ -240,6 +269,7 @@ export default {
           line-height: 21px;
           margin-bottom: 16px;
         }
+
         .time {
           font-size: 13px;
           font-family: MicrosoftYaHei;
@@ -249,6 +279,5 @@ export default {
       }
     }
   }
-
 }
 </style>

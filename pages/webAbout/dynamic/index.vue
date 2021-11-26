@@ -45,51 +45,54 @@ import { nanoid } from 'nanoid'
 import { errorTip } from '~/utils'
 
 export default {
+  head () {
+    return {
+      title: '企业动态',
+    }
+  },
   name: "contact",
   components: {
     websiteHeader,
     webPagination,
   },
   data () {
+    return {}
+  },
+  async asyncData ({ query, app }) {
+    let list = [],
+        params = {
+          pageSize: +query.pageSize,
+          pageNumber: +query.pageNumber,
+          total: +query.total,
+        },
+        url = `/dynamicConsulting/getDynamicConsultingPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`
+    let { result, pageResult } = await app.$axios.$get(url);
+    params.total = pageResult.total || 0;
+    list = result;
     return {
-      list: [],
-      params: {
-        pageSize: 9,
-        pageNumber: 0,
-        total: 0,
-      },
+      list: result,
+      params: params,
     }
   },
-  mounted () {
-    this.getData(this.params);
-  },
+  watchQuery: true,
   methods: {
-    getData (params) {
-      this.$axios.get(
-          `/dynamicConsulting/getDynamicConsultingPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`).
-          then(res => {
-            if (res.errorCode === 200) {
-              this.list = res.data.result;
-              this.params.total = res.data.pageResult.total;
-            } else {
-              errorTip(res.msg)
-            }
-          }).
-          catch(err => {
-            console.log(err)
-          })
-    },
-    resetParams () {
-      this.params.pageSize = 10;
-      this.params.pageNumber = 0;
-    },
     handleSizeChange (val) {
       this.params.pageSize = val;
-      this.getData(this.params);
+      this.queryData(this.params);
     },
     handleCurrentChange (val) {
       this.params.pageNumber = val;
-      this.getData(this.params);
+      this.queryData(this.params);
+    },
+    queryData (params) {
+      this.$router.push({
+        path: '/webAbout/dynamic',
+        query: {
+          pageSize: +params.pageSize,
+          pageNumber: +params.pageNumber,
+          total: +params.total,
+        },
+      })
     },
     goDetail (_id) {
       this.$router.push({
@@ -172,12 +175,12 @@ export default {
 
   .dynamic-list {
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 0 auto;
     padding-top: 80px;
-    width: 100%;
+    width: 67%;
 
     .list-item {
       display: flex;

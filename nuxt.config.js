@@ -1,5 +1,10 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  loading: false,
+  router: {
+    base: process.env.NODE_ENV === 'production' ? '/korea/' : '',
+    resourceHints: false,
+    prefetchLinks: false,
+  },
   head: {
     title: '千职鹤官网',
     htmlAttrs: {
@@ -7,13 +12,20 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+      },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
       // Google 搜索引擎文件
       {
         name: 'google-site-verification',
         content: 'oEDhqa3yK7t6RIteWlQxcLHxSenqpIqHsHfj36xRrXA',
+      },
+      {
+        name: 'keywords',
+        content: '985老师，线上家教，线上辅导，1对1，一对一，高中辅导，初高衔接，学科辅导，1对1收费',
       },
     ],
     link: [
@@ -26,41 +38,42 @@ export default {
       },
     ],
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'assets/common.less',
-    'assets/arrow.css',
-    'assets/normalize.min.css',
+    '~/assets/common.css',
+    '~/assets/arrow.css',
+    '~/assets/normalize.min.css',
     'element-ui/lib/theme-chalk/index.css',
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
-      src: '~plugins/elementUI',
+      src: '~/plugins/elementUI',
       ssr: true,
     },
     {
-      src: '~plugins/axios',
+      src: '~/plugins/axios',
       ssr: true,
     },
   ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: 'http://39.104.167.224/api/biz',
+    },
+  },
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     vendor: ['element-ui'],
+    postcss: [
+      require('postcss-px2rem')({
+        remUnit: 16,
+      }),
+    ],
+  },
+  generate: {
+    route: [],
   },
 }

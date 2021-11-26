@@ -15,13 +15,13 @@
               <div class="qrcode-wrap">
                 <div class="img"><img :src="qrcode" alt=""></div>
                 <div class="down-btn">
-                  <div class="btn">
+                  <div class="btn" @click="downloadAndroid">
                     <div class="icon-img">
                       <img :src="androidIcon" alt=""/>
                     </div>
                     <span>安卓 APP下载</span>
                   </div>
-                  <div class="btn">
+                  <div class="btn" @click="iosDownloadFile">
                     <div class="icon-img">
                       <img :src="iosIcon" alt=""/>
                     </div>
@@ -43,10 +43,15 @@
 
 <script>
 import WebHeader from '~/components/webHeader'
-import { IMG_BASE_URL } from '~/utils'
+import { androidAndWindowDownload, IMG_BASE_URL, iosDownload } from '~/utils'
 
 export default {
   name: "index",
+  head() {
+    return {
+      title: '千职鹤-下载APP'
+    }
+  },
   components: { WebHeader },
   data () {
     return {
@@ -55,6 +60,14 @@ export default {
       iosIcon: IMG_BASE_URL + '/web-img/common/ios-icon.png',
     }
   },
+  methods: {
+    downloadAndroid() {
+      androidAndWindowDownload()
+    },
+    iosDownloadFile() {
+      iosDownload()
+    }
+  }
 }
 </script>
 

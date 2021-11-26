@@ -22,8 +22,8 @@
                 <div class="title">联系我们</div>
                 <el-input v-model="sendData.name" placeholder="姓名"></el-input>
                 <el-input v-model.number="sendData.phone" placeholder="联系电话"></el-input>
-                <el-input type="textarea" :rows="4" v-model="sendData.content" placeholder="留言"></el-input>
-                <div class="send-btn">提交</div>
+                <el-input type="textarea" :rows="4" v-model="sendData.message" placeholder="留言"></el-input>
+                <div class="send-btn" @click="sendDataSubmit">提交</div>
               </div>
             </div>
           </div>
@@ -35,9 +35,21 @@
 
 <script>
 import websiteHeader from '~/components/webHeader'
-import { companyInfo } from '~/utils'
+import { companyInfo, errorTip, successTip } from '~/utils'
 
 export default {
+  head () {
+    return {
+      title: '千职鹤-联系我们',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.companyInfo.companyAddress + this.companyInfo.companyEmail,
+        },
+      ],
+    }
+  },
   name: "contact",
   components: {
     websiteHeader,
@@ -48,9 +60,24 @@ export default {
       sendData: {
         name: '',
         phone: '',
-        content: '',
+        message: '',
+        type: '联系我们',
       },
     }
+  },
+  methods: {
+    sendDataSubmit () {
+      this.$axios.post('/officialWebsiteFeedback/addOfficialWebsiteFeedback', this.sendData).then(res => {
+        if (res.errorCode === 200) {
+          successTip('咨询成功')
+          this.dialogVisible = false;
+        } else {
+          errorTip(res.msg)
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
   },
 }
 </script>
@@ -62,6 +89,7 @@ export default {
     background-size: 100% 100%;
     width: 100%;
     height: 900px;
+
     .service-wrap {
       position: absolute;
       left: 340px;
@@ -102,9 +130,9 @@ export default {
         padding: 20px;
         width: 400px;
         box-sizing: border-box;
-        height: 400px;
+        //height: 400px;
         background: #FFFFFF;
-        box-shadow: 0px 6px 40px 0px rgba(18, 38, 65, 0.1);
+        box-shadow: 0 6px 40px 0 rgba(18, 38, 65, 0.1);
 
         .title {
           font-size: 20px;

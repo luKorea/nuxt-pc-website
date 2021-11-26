@@ -11,7 +11,7 @@
   >
     <el-form ref="form" :model="formData">
       <el-form-item v-if="selectDiffType === 'school'">
-        <el-input v-model="formData.school" placeholder="学校名称"></el-input>
+        <el-input v-model="formData.schoolName" placeholder="学校名称"></el-input>
       </el-form-item>
       <el-form-item>
         <el-input v-model="formData.name" placeholder="姓名"></el-input>
@@ -29,7 +29,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-input type="textarea" :rows="4" v-model="formData.content" placeholder="留言"></el-input>
+        <el-input type="textarea" :rows="4" v-model="formData.message" placeholder="留言"></el-input>
       </el-form-item>
       <el-form-item>
         <div class="btn-send" @click="sendData">提交资料</div>
@@ -60,6 +60,7 @@ export default {
   data () {
     return {
       formData: {
+        schoolName: '',
         name: '',
         phone: '',
         content: '',
@@ -78,7 +79,7 @@ export default {
       this.formData = {
         name: '',
         phone: '',
-        content: '',
+        message: '',
         type: '',
       }
     },

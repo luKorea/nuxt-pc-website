@@ -4,7 +4,7 @@
       <!--info介绍-->
       <div class="footer-info">
         <div class="company-wrap">
-          <div class="company-logo"><img :src="logo" alt="careershe-logo"/></div>
+          <div class="company-logo"><img :src="logo" alt="千职鹤"/></div>
           <div class="company-info">
             <div class="company-phone common-bottom">电话：{{ companyInfo.companyPhone }}</div>
             <div class="company-email common-bottom">邮箱：{{ companyInfo.companyEmail }}</div>
@@ -102,7 +102,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 367px;
+  //height: 367px;
+  padding: 20px 0;
   //position: fixed;
   //bottom: 0;
   //left: 0;

@@ -105,7 +105,8 @@ export default {
     padding: 80px 0;
 
     .fun-content {
-      height: 500px;
+      width: 981px;
+      height: 720px;
       img {
         width: 100%;
         height: 100%;

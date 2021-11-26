@@ -2,7 +2,7 @@
   <div class="careershe-app-container">
     <web-header>
       <template #logo>
-        <div class="logo">
+        <div class="logo" @click="goToHome">
           <img :src="logo" alt="">
         </div>
       </template>
@@ -10,21 +10,21 @@
         <div class="content">
           <div class="info">
             <div class="common-title">{{ plainInfo.title }}</div>
-            <div class="common-desc" style="width: 693px">{{ plainInfo.desc }}</div>
+            <div class="common-desc">{{ plainInfo.desc }}</div>
             <div class="btn-group">
-              <div class="btn">
-                <span class="img"><img :src="androidIcon" alt=""></span>
+              <div class="btn" @click="downAndroidApp">
+                <div class="img"><img :src="androidIcon" alt=""></div>
                 <span class="title">安卓 APP下载</span>
               </div>
-              <div class="btn">
-                <span class="img"><img :src="iosIcon" alt=""></span>
+              <div class="btn" @click="downIosApp">
+                <div class="img"><img :src="iosIcon" alt=""></div>
                 <span class="title">iOS APP下载</span>
               </div>
               <el-popover placement="bottom" width="150" trigger="hover">
                 <img style="width: 150px; height: 150px"
                      src="https://www.careershe.com/images/mobile_download_url.png" alt=""/>
                 <div class="btn" slot="reference">
-                  <span class="img"><img :src="codeIcon" alt=""></span>
+                  <div class="img"><img :src="codeIcon" alt=""></div>
                   <span class="title">下载二维码</span>
                 </div>
               </el-popover>
@@ -34,8 +34,8 @@
       </template>
     </web-header>
     <web-item :info="schoolInfo"></web-item>
-    <web-app-fun @clickFunction="downApp"></web-app-fun>
-    <web-video :info="videoInfo" @clickFunction="downApp"></web-video>
+    <web-app-fun @clickFunction="downAndroidApp"></web-app-fun>
+    <web-video :info="videoInfo" @clickFunction="downAndroidApp"></web-video>
   </div>
 </template>
 
@@ -44,9 +44,26 @@ import WebHeader from '~/components/webHeader'
 import WebAppFun from '~/components/pageComponents/serviceAppComponents/webAppFun'
 import WebVideo from '~/components/webVideo'
 import WebItem from '~/components/webItem'
-import { androidAndWindowDownload, IMG_BASE_URL, randomId } from '~/utils'
+import { androidAndWindowDownload, IMG_BASE_URL, iosDownload, randomId } from '~/utils'
 
 export default {
+  head() {
+    return {
+      title: '千职鹤-千职鹤APP',
+      meta: [
+        {
+          name: 'description',
+          content: this.plainInfo.desc,
+          hid: 'description'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.plainInfo.title
+        }
+      ]
+    }
+  },
   name: "careersheApp",
   components: {
     WebAppFun,
@@ -92,8 +109,16 @@ export default {
     }
   },
   methods: {
-    downApp () {
+    downAndroidApp () {
       androidAndWindowDownload();
+    },
+    downIosApp() {
+      iosDownload();
+    },
+    goToHome () {
+      this.$router.push({
+        path: '/',
+      })
     },
   },
 }
@@ -114,6 +139,7 @@ export default {
 
     .info {
       padding-left: 340px;
+      width: 40%;
     }
 
     .btn-group {
@@ -122,8 +148,10 @@ export default {
       align-items: center;
 
       .btn {
-        width: 172px;
+        //width: 172px;
         height: 53px;
+        padding: 6px 15px;
+        //line-height: 53px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -139,6 +167,7 @@ export default {
           img {
             width: 100%;
             height: 100%;
+            vertical-align: text-top;
           }
         }
 

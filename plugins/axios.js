@@ -17,8 +17,6 @@ function endLoading () {
 }
 
 export default function ({ store, redirect, req, router, app: { $axios } }) {
-  // 数据访问前缀
-  $axios.defaults.baseURL = 'http://39.104.167.224/api/biz';
   // request拦截器
   $axios.onRequest(config => {
     if (process.client) {

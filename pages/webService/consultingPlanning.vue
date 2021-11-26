@@ -2,7 +2,7 @@
   <div class="service-plain-container">
     <web-header>
       <template #logo>
-        <div class="logo">
+        <div class="logo" @click="goToHome">
           <img :src="logo" alt="">
         </div>
       </template>
@@ -35,6 +35,11 @@ import WebTutor from '~/components/pageComponents/servicePlainComponents/webTuto
 import { IMG_BASE_URL, successTip } from '~/utils'
 
 export default {
+  head() {
+    return {
+      title: '千职鹤-生涯资讯规划'
+    }
+  },
   name: "consultingPlanning",
   components: {
     WebHeader, WebCustomer, WebDialog, WebPlatform, WebTutor,
@@ -61,6 +66,11 @@ export default {
         }
       }).catch(err => {
         console.log(err)
+      })
+    },
+    goToHome () {
+      this.$router.push({
+        path: '/',
       })
     },
   },

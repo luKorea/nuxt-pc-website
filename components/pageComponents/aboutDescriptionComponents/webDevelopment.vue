@@ -5,24 +5,24 @@
 
     <div class="development-wrap">
       <div class="wrap-top">
-        <template v-for="(item, index) in companyDevelopment.list">
+        <template v-for="(item, index) in companyDevelopmentList">
           <div class="item" :key="index" v-if="index % 2 === 0">
             <div class="common-line-top"></div>
             <div class="title-wrap">
-              <div class="time">{{ item.timer }}</div>
-              <div class="title">{{ item.title }}</div>
+              <div class="time">{{ item.name }}</div>
+              <div class="title">{{ item.description }}</div>
             </div>
           </div>
         </template>
       </div>
 <!--      <div class="line"/>-->
       <div class="wrap-bottom">
-        <template v-for="(item, index) in companyDevelopment.list">
+        <template v-for="(item, index) in companyDevelopmentList">
           <div class="item" :key="index" v-if="index % 2 !== 0">
             <div class="common-line-bottom"></div>
             <div class="title-wrap">
-              <div class="time">{{ item.timer }}</div>
-              <div class="title">{{ item.title }}</div>
+              <div class="time">{{ item.name }}</div>
+              <div class="title">{{ item.description }}</div>
             </div>
           </div>
         </template>
@@ -39,6 +39,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    companyDevelopmentList: {
+      type: Array,
+      default: () => []
+    }
   },
 }
 

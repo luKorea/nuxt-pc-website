@@ -8,13 +8,13 @@
       </template>
     </website-header>
     <!--APP模块-->
-    <web-app @goPage="goPage"/>
+    <web-app @goPage="goPage" @download="downloadApp"/>
     <!--system模块-->
     <web-system @goPage="goPage" @changeVisible="changeVisible"/>
     <!--规划模块-->
     <web-service @goPage="goPage" @changeVisible="changeVisible"/>
     <!--企业动态-->
-    <web-news :list="newsList" @goDetail="goNewsDetail"/>
+    <web-news :list="list" @goDetail="goNewsDetail"/>
     <!--关于我们-->
     <web-about/>
 
@@ -31,10 +31,17 @@ import WebSystem from '~/components/pageComponents/homeComponents/webSystem'
 import WebService from '~/components/pageComponents/homeComponents/webService'
 import WebNews from '~/components/pageComponents/homeComponents/webNews'
 import WebAbout from '~/components/pageComponents/homeComponents/webAbout'
-import { errorTip, IMG_BASE_URL, successTip } from '~/utils'
+import { androidAndWindowDownload, errorTip, IMG_BASE_URL, successTip } from '~/utils'
 import WebDialog from '~/components/webDialog'
 
 export default {
+  async asyncData ({ params, app }) {
+    let response = await app.$axios.$get('/dynamicConsulting/getDynamicConsultingList');
+    console.log(response, 'response')
+    return {
+      list: response
+    }
+  },
   components: {
     WebAbout,
     WebNews,
@@ -50,13 +57,13 @@ export default {
       dialogVisible: false,
       dialogTitle: '预约试用',
       dialogType: '',
-      bannerImg: IMG_BASE_URL +  '/web-img/home/home-banner.png',
+      bannerImg: IMG_BASE_URL + '/web-img/home/home-banner.png',
     }
   },
-  mounted () {
-    this.getNews()
-  },
   methods: {
+    downloadApp () {
+      androidAndWindowDownload();
+    },
     changeVisible (type) {
       this.dialogType = type;
       this.dialogTitle = type === 'service' ? '生涯规划咨询' : '预约使用';
@@ -70,6 +77,7 @@ export default {
       })
     },
     sendData (data) {
+      if (data.type === '') data.type = '预约使用';
       this.$axios.post('/officialWebsiteFeedback/addOfficialWebsiteFeedback', data).then(res => {
         if (res.errorCode === 200) {
           successTip('咨询成功')
@@ -81,20 +89,11 @@ export default {
         console.log(err)
       })
     },
-    getNews () {
-      this.$axios.get('dynamicConsulting/getDynamicConsultingList').then(res => {
-        if (res.errorCode === 200) {
-          this.newsList = res.data;
-        } else {
-          errorTip(res.msg)
-        }
+    goNewsDetail (_id) {
+      this.$router.push({
+        path: `/webAbout/dynamic/${_id}`,
       })
     },
-    goNewsDetail(_id) {
-      this.$router.push({
-        path: `/webAbout/dynamic/${_id}`
-      })
-    }
   },
 }
 </script>
@@ -103,7 +102,7 @@ export default {
 .home-container {
   .img-wrap {
     width: 100%;
-    height: 900px;
+    //height: 100%;
 
     img {
       width: 100%;
