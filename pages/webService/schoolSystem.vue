@@ -114,18 +114,13 @@ export default {
       videoInfo: {
         title: '校园生涯教育平台介绍',
         btnText: '免费试用',
-        videoSrc: 'https://v.careershe.com/product_intro.mp4',
+        videoSrc: 'https://v.careershe.com/Newcollegeentranceexaminationselectedsubjects.mp4',
       },
     }
   },
   methods: {
     changeVisible () {
       this.dialogVisible = true;
-    },
-    goToHome () {
-      this.$router.push({
-        path: '/',
-      })
     },
     sendData (data) {
       if (data.type === '') data.type = '预约使用';
@@ -138,6 +133,11 @@ export default {
         }
       }).catch(err => {
         console.log(err)
+      })
+    },
+    goToHome () {
+      this.$router.push({
+        path: '/',
       })
     },
   },

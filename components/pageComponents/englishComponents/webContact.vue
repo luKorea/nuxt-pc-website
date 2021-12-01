@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     sendData () {
-      console.log(this.formData)
+      this.$emit('sendData', this.formData)
     },
   },
 }

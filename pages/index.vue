@@ -3,7 +3,12 @@
     <website-header>
       <template #imgWrap>
         <div class="img-wrap">
-          <img :src="bannerImg" alt="">
+          <el-carousel style="z-index: -99" height="56.25rem">
+            <el-carousel-item v-for="(item, index) in swiperImage" :key="index">
+              <img :src="item" alt="" style="width: 100%; height: 100%;">
+            </el-carousel-item>
+          </el-carousel>
+          <!--          <img :src="bannerImg" alt="">-->
         </div>
       </template>
     </website-header>
@@ -31,7 +36,7 @@ import WebSystem from '~/components/pageComponents/homeComponents/webSystem'
 import WebService from '~/components/pageComponents/homeComponents/webService'
 import WebNews from '~/components/pageComponents/homeComponents/webNews'
 import WebAbout from '~/components/pageComponents/homeComponents/webAbout'
-import { androidAndWindowDownload, errorTip, IMG_BASE_URL, successTip } from '~/utils'
+import { androidAndWindowDownload, downVersionApp, errorTip, IMG_BASE_URL, successTip } from '~/utils'
 import WebDialog from '~/components/webDialog'
 
 export default {
@@ -39,7 +44,7 @@ export default {
     let response = await app.$axios.$get('/dynamicConsulting/getDynamicConsultingList');
     console.log(response, 'response')
     return {
-      list: response
+      list: response,
     }
   },
   components: {
@@ -54,6 +59,11 @@ export default {
   data () {
     return {
       newsList: [],
+      swiperImage: [
+        IMG_BASE_URL + '/web-img/banner1.png',
+        IMG_BASE_URL + '/web-img/banner2.png',
+        IMG_BASE_URL + '/web-img/banner3.png',
+      ],
       dialogVisible: false,
       dialogTitle: '预约试用',
       dialogType: '',
@@ -62,7 +72,7 @@ export default {
   },
   methods: {
     downloadApp () {
-      androidAndWindowDownload();
+      downVersionApp()
     },
     changeVisible (type) {
       this.dialogType = type;
@@ -102,8 +112,7 @@ export default {
 .home-container {
   .img-wrap {
     width: 100%;
-    //height: 100%;
-
+    height: 900px;
     img {
       width: 100%;
       height: 100%;

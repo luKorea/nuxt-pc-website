@@ -53,6 +53,25 @@ export const androidAndWindowDownload = () => {
 }
 
 export const iosDownload = () => {
-  window.open('https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662', '_blank')
+  window.open(
+    'https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662',
+    '_blank')
   // window.location.href = "https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662"
+}
+
+export const downVersionApp = () => {
+  var u = navigator.userAgent, app = navigator.appVersion;
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+  var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  console.log(isIOS, isAndroid)
+  if (isAndroid) {
+    window.location.href = "https://www.careershe.com/download/careershe.apk"
+  }
+  if (isIOS) {
+    window.open(
+      'https://apps.apple.com/cn/app/%E5%8D%83%E8%81%8C%E9%B9%A4/id1463506662',
+      '_blank')
+  } else {
+    window.location.href = "https://www.careershe.com/download/careershe.apk"
+  }
 }

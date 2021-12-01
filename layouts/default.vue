@@ -1,6 +1,8 @@
 <template>
   <div class="website-container">
-    <nuxt/>
+    <div class="selection">
+      <nuxt/>
+    </div>
     <website-footer></website-footer>
   </div>
 </template>
@@ -17,10 +19,16 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .website-container {
   width: 100%;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  .selection {
+    flex: 1;
+    width: 100%;
+    //overflow-y: scroll;
+  }
 }
 </style>

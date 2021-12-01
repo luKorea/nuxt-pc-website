@@ -18,7 +18,7 @@
         </template>
       </div>
       <div class="btn-home">
-        <div class="btn-down">Free trial</div>
+        <div class="btn-down" @click="changeVisible">Free trial</div>
         <div class="btn-more">Learn more</div>
       </div>
     </div>
@@ -89,6 +89,11 @@ export default {
       },
     }
   },
+  methods: {
+    changeVisible () {
+      this.$emit('clickFunction', 'school')
+    },
+  }
 }
 </script>
 

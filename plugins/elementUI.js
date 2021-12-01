@@ -11,9 +11,14 @@ import {
   Submenu,
   Select,
   Option,
-  Popover
+  Popover,
+  Carousel,
+  CarouselItem
 } from 'element-ui' //引入分页组件
 
+
+Vue.use(Carousel)
+Vue.use(CarouselItem)
 Vue.use(Popover)
 Vue.use(Select)
 Vue.use(Option)

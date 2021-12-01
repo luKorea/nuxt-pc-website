@@ -17,7 +17,7 @@
           </template>
         </div>
         <div class="btn-home">
-          <div class="btn-down">DownLoad now</div>
+          <div class="btn-down" @click="download">DownLoad now</div>
           <div class="btn-more">Learn more</div>
         </div>
       </div>
@@ -93,6 +93,11 @@ export default {
       },
     }
   },
+  methods: {
+    download() {
+      this.$emit('download')
+    },
+  }
 }
 </script>
 

@@ -12,7 +12,7 @@
         </template>
       </div>
       <div class="btn-home">
-        <div class="btn-down">
+        <div class="btn-down" @click="clickFunction">
           <span>Appointment</span>
           <span>consulta</span>
         </div>
@@ -72,6 +72,11 @@ export default {
       },
     }
   },
+  methods: {
+    clickFunction() {
+      this.$emit('clickFunction', 'service')
+    }
+  }
 }
 </script>
 
