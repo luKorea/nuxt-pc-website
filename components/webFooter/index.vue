@@ -37,9 +37,18 @@
       <!--copyright-->
       <div class="footer-copyright">
         <div class="copyright">{{ companyInfo.companyCopyright }}</div>
+        <div class="copyright" style="cursor: pointer" @click="showImg">联网备案信息</div>
         <div class="company">{{ companyInfo.companyName }}</div>
       </div>
     </div>
+    <el-dialog
+        :visible.sync="imgShow"
+        top="10vh"
+        width="70%">
+      <div  class="beian">
+        <img :src="beianImg" alt=""/>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -52,7 +61,9 @@ export default {
   data () {
     return {
       logo: IMG_BASE_URL + '/web-img/common/logo.png',
+      beianImg: IMG_BASE_URL + '/web-img/beian.png',
       companyInfo: companyInfo,
+      imgShow: false,
       linkToWebsite: [
         {
           id: nanoid(12),
@@ -88,6 +99,9 @@ export default {
         path: url,
       })
     },
+    showImg() {
+      this.imgShow = !this.imgShow;
+    }
   },
 }
 </script>
@@ -214,6 +228,19 @@ export default {
       color: #FFFFFF;
       height: 19px;
       line-height: 19px;
+    }
+  }
+  .beian {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    //padding-left: 20px;
+    img {
+      width: 95%;
+      height: 100%;
     }
   }
 }

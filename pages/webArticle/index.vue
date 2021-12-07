@@ -79,8 +79,21 @@ export default {
             pageNumber: +query.pageNumber,
             total: +query.total,
           },
-          list = [];
-      category = responseItemList && responseItemList[currentIndex].category;
+          list = [],
+          itemList = [
+            {
+              category: '全部',
+            },
+          ];
+      itemList.push(...responseItemList);
+      category = itemList && itemList[currentIndex].category;
+      if (category === '全部') {
+        category = '';
+        let url = `/article/getArticleDetailPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}&category=${urlencode(
+            category)}`;
+        list = await app.$axios.$get(url);
+        params.total = list.pageResult.total || 0;
+      }
       if (category !== "") {
         let url = `/article/getArticleDetailPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}&category=${urlencode(
             category)}`;
@@ -88,7 +101,7 @@ export default {
         params.total = list.pageResult.total || 0;
       }
       return {
-        itemList: responseItemList,
+        itemList: itemList,
         list: list.result,
         params: params,
         currentIndex: currentIndex,
@@ -112,6 +125,7 @@ export default {
   watchQuery: true,
   methods: {
     changeClick (index, category) {
+      if (category === '全部') category = '';
       this.currentIndex = index;
       this.category = category;
       this.resetParams();

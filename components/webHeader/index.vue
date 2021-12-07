@@ -15,7 +15,6 @@
         <template>
           <el-menu :default-active="activeIndex"
                    router
-                   class="nav-link"
                    mode="horizontal" @select="handleSelect">
             <template v-for="value in linkList">
               <el-submenu v-if="value.children && value.children.length > 0" :index="value.href" :key="value.id">
@@ -47,7 +46,6 @@
         <template>
           <el-menu :default-active="activeIndex"
                    router
-                   class="nav-link"
                    mode="horizontal" @select="handleSelect">
             <template v-for="value in linkList">
               <el-submenu v-if="value.children && value.children.length > 0" :index="value.href" :key="value.id">
@@ -137,6 +135,11 @@ export default {
 
 <style>
 
+.el-menu.el-menu--horizontal {
+  border-bottom: none;
+  padding-right: 120px;
+  background-color: transparent;
+}
 
 .nav-container .el-menu--horizontal > .el-menu-item {
   color: #FFFFFF !important;
@@ -171,6 +174,17 @@ export default {
 }
 
 .nav-container .el-menu--horizontal > .el-submenu .el-submenu__title i {
+  display: none;
+}
+
+.el-menu--collapse .el-submenu__title span{
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  visibility: hidden;
+  display: inline-block;
+}
+.el-menu--collapse .el-submenu__icon-arrow{
   display: none;
 }
 

@@ -15,7 +15,7 @@
           <div class="type-info" v-show="!list[index].showAvatar" @click="changeVisible">
             <div class="bottom-btn">立即咨询</div>
             <template v-for="(child, i) in item.tip">
-              <div class="tip-wrap" :key="i">{{ child }}</div>
+              <div class="tip-wrap" :key="i" style="font-size: 8px !important;">{{ child }}</div>
             </template>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default {
         .tip-wrap {
           display: flex;
           flex-direction: column;
-          font-size: 12px;
+          font-size: 10px;
           font-family: MicrosoftYaHei;
           color: #FFFFFF;
           line-height: 24px;

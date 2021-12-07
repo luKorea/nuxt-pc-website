@@ -28,19 +28,19 @@ export default {
         list: [
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F53%2F0a%2Fda%2F530adad966630fce548cd408237ff200.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639797566&t=32354825476c494fca61e653c70a6d30',
+            imgUrl: IMG_BASE_URL + '/web-img/jiaoshi-one.png',
             title: '选科征集统计',
             desc: '线上完成学生选科征集工作，统计分析一目了然',
           },
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F533%2Fw800h533%2F20180606%2Febc8-hcqccin9939664.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639895596&t=0348d8fbaa8da12064cea1513645e023',
+            imgUrl: IMG_BASE_URL + '/web-img/jiaoshi-two.png',
             title: '测评统计',
             desc: '兴趣测试、性格测试，更加了解每一个学生',
           },
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F533%2Fw800h533%2F20180606%2Febc8-hcqccin9939664.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639895596&t=0348d8fbaa8da12064cea1513645e023',
+            imgUrl: IMG_BASE_URL + '/web-img/jiaoshi-three.png',
             title: '学生数据分析',
             desc: '学生数据在线统计分析，及时掌握学生动态',
           },
@@ -52,19 +52,19 @@ export default {
         list: [
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F53%2F0a%2Fda%2F530adad966630fce548cd408237ff200.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639797566&t=32354825476c494fca61e653c70a6d30',
+            imgUrl: IMG_BASE_URL + '/web-img/xuesheng-one.png',
             title: '测评中心',
             desc: '性格测试、兴趣测试，让学生更加了解自我',
           },
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn05%2F533%2Fw800h533%2F20180606%2Febc8-hcqccin9939664.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639895596&t=0348d8fbaa8da12064cea1513645e023',
+            imgUrl: IMG_BASE_URL + '/web-img/xuesheng-two.png',
             title: '选科征集',
             desc: '线上填写选科征集信息，快捷方便',
           },
           {
             id: randomId(),
-            imgUrl: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F53%2F0a%2Fda%2F530adad966630fce548cd408237ff200.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639797566&t=32354825476c494fca61e653c70a6d30',
+            imgUrl: IMG_BASE_URL + '/web-img/xuesheng-three.png',
             title: '新高考选科查询',
             desc: '高一的选科可以填报哪些专业？一查便知',
           },
