@@ -9,7 +9,7 @@
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
             <span class="title text-overflow">{{ item.title }}</span>
-            <span class="desc">{{ item.description }}</span>
+<!--            <span class="desc">{{ item.description }}</span>-->
             <div class="bottom-tip">
               <span class="time">{{ item._created_at }}</span>
               <span class="more">了解更多 <i class="el-icon-arrow-right"></i></span>

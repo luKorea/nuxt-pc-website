@@ -23,7 +23,7 @@
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
             <span class="title text-overflow">{{ item.title }}</span>
-            <span class="desc">{{ item.description }}</span>
+<!--            <span class="desc">{{ item.description }}</span>-->
             <span class="time">{{ item._updated_at }}</span>
           </div>
         </div>
