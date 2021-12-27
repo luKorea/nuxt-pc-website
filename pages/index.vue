@@ -99,10 +99,14 @@ export default {
         console.log(err)
       })
     },
-    goNewsDetail (_id) {
-      this.$router.push({
-        path: `/webAbout/dynamic/${_id}`,
-      })
+    goNewsDetail (_id, type, url) {
+      if (type === "外链") {
+        window.open(url, '_blank')
+      } else {
+        this.$router.push({
+          path: `/webAbout/dynamic/${_id}`,
+        })
+      }
     },
   },
 }

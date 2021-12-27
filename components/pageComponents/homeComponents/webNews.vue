@@ -4,7 +4,8 @@
 
     <div class="dynamic-list">
       <template v-for="item in list">
-        <div class="list-item" :title="item.title" :key="item._id" @click="goDetail(item._id)">
+        <div class="list-item" :title="item.title" :key="item._id"
+             @click="goDetail(item._id, item.type, item.url)">
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
             <span class="title text-overflow">{{ item.title }}</span>
@@ -31,9 +32,10 @@ export default {
     }
   },
   methods: {
-    goDetail (id) {
-      this.$emit('goDetail', id)
+    goDetail (id, type, url) {
+      this.$emit('goDetail', id, type, url)
     }
+
   }
 }
 </script>

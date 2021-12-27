@@ -33,3 +33,6 @@
 1. normalize 去除浏览器默认样式
 2. element 按需引入，实现小部分功能
 3. 高德地图
+
+npm run build
+npm run generate

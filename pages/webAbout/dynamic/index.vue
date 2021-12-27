@@ -19,7 +19,7 @@
 
     <div class="dynamic-list">
       <template v-for="item in list">
-        <div class="list-item" :title="item.title" @click="goDetail(item._id)">
+        <div class="list-item" :title="item.title" @click="goDetail(item._id, item.type, item.url)">
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
             <span class="title text-overflow">{{ item.title }}</span>
@@ -94,10 +94,14 @@ export default {
         },
       })
     },
-    goDetail (_id) {
-      this.$router.push({
-        path: `/webAbout/dynamic/${_id}`,
-      })
+    goDetail (_id, type, url) {
+      if (type === "外链") {
+        window.open(url, '_blank')
+      } else {
+        this.$router.push({
+          path: `/webAbout/dynamic/${_id}`,
+        })
+      }
     },
   },
 }
