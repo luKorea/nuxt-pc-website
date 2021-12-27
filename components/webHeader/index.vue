@@ -135,6 +135,13 @@ export default {
 
 <style>
 
+.el-menu-item * {
+  vertical-align: top !important;
+}
+.el-menu--horizontal>.el-submenu .el-submenu__title {
+  //height: 0;
+}
+
 .el-menu.el-menu--horizontal {
   border-bottom: none;
   padding-right: 120px;

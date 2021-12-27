@@ -22,7 +22,7 @@
         <div class="list-item" :title="item.title" @click="goDetail(item._id)">
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
-            <span class="title">{{ item.title }}</span>
+            <span class="title text-overflow">{{ item.title }}</span>
             <span class="desc">{{ item.description }}</span>
             <span class="time">{{ item._updated_at }}</span>
           </div>
@@ -68,7 +68,7 @@ export default {
         url = `/dynamicConsulting/getDynamicConsultingPage?pageSize=${params.pageSize}&pageNumber=${params.pageNumber}`
     let { result, pageResult } = await app.$axios.$get(url);
     params.total = pageResult.total || 0;
-    list = result;
+    list = result !== undefined ? result : [];
     return {
       list: result,
       params: params,
@@ -226,7 +226,8 @@ export default {
           font-family: MicrosoftYaHei;
           color: #0B173A;
           line-height: 24px;
-          margin-bottom: 8px;
+          height: 60px;
+          //margin-bottom: 8px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;

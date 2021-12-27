@@ -22,7 +22,7 @@
 
     <!--地图区域-->
     <div class="item-wrap">
-      <web-map></web-map>
+      <web-map map-width="450px"></web-map>
       <div class="company-content">
         <span>办公地点：{{ companyInfo.companyAddress }}</span>
         <span>联系人：{{ companyInfo.companyBOSS }}</span>
@@ -135,15 +135,15 @@ export default {
 
   .item-wrap {
     position: absolute;
-    top: 644px;
+    top: 680px;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    width: 1240px;
+    width: 1260px;
     box-sizing: border-box;
     padding: 32px 40px;
     background: #FFFFFF;
-    box-shadow: 0px 6px 40px 0px rgba(18, 38, 65, 0.1);
+    box-shadow: 0 6px 40px 0 rgba(18, 38, 65, 0.1);
 
     .company-content {
       display: flex;

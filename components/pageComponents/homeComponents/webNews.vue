@@ -7,7 +7,7 @@
         <div class="list-item" :title="item.title" :key="item._id" @click="goDetail(item._id)">
           <div class="img"><img :src="item.image" alt=""></div>
           <div class="info">
-            <span class="title">{{ item.title }}</span>
+            <span class="title text-overflow">{{ item.title }}</span>
             <span class="desc">{{ item.description }}</span>
             <div class="bottom-tip">
               <span class="time">{{ item._created_at }}</span>
@@ -101,6 +101,7 @@ export default {
           font-family: MicrosoftYaHei;
           color: #FFFFFF;
           line-height: 24px;
+          height: 60px;
           margin-bottom: 30px;
           text-overflow: -o-ellipsis-lastline;
           overflow: hidden;

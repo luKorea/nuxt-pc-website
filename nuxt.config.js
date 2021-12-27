@@ -59,7 +59,8 @@ export default {
   buildModules: [],
   publicRuntimeConfig: {
     axios: {
-      baseURL: 'http://39.104.167.224/api/biz',
+      // baseURL: 'http://39.104.167.224/api/biz',
+      baseURL: 'https://www.careershe.com/qzhv1.7/biz',
     },
   },
   modules: [
