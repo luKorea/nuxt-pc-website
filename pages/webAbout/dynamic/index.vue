@@ -167,6 +167,7 @@ export default {
           font-family: MicrosoftYaHeiSemibold;
           color: #0B173A;
           line-height: 32px;
+          height: 60px;
           margin-bottom: 40px;
         }
 
@@ -222,6 +223,7 @@ export default {
           font-family: MicrosoftYaHeiSemibold;
           color: #0B173A;
           line-height: 24px;
+          height: 60px;
           margin-bottom: 15px;
         }
 

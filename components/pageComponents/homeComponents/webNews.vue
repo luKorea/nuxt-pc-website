@@ -97,6 +97,7 @@ export default {
           color: #FFFFFF;
           line-height: 24px;
           margin-bottom: 15px;
+          height: 60px;
         }
         .desc {
           font-size: 14px;
