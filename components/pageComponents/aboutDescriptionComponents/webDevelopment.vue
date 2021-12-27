@@ -6,7 +6,7 @@
     <div class="development-wrap">
       <div class="wrap-top">
         <template v-for="(item, index) in companyDevelopmentList">
-          <div class="item" :key="index" v-if="index % 2 === 0">
+          <div class="item" :key="index" v-if="index <  4">
             <div class="common-line-top"></div>
             <div class="title-wrap">
               <div class="time">{{ item.name }}</div>
@@ -18,7 +18,7 @@
 <!--      <div class="line"/>-->
       <div class="wrap-bottom">
         <template v-for="(item, index) in companyDevelopmentList">
-          <div class="item" :key="index" v-if="index % 2 !== 0">
+          <div class="item" :key="index" v-if="index >= 4">
             <div class="common-line-bottom"></div>
             <div class="title-wrap">
               <div class="time">{{ item.name }}</div>
@@ -152,7 +152,8 @@ export default {
 
     .wrap-bottom {
       display: flex;
-      width: 100%;
+      justify-content: center;
+      min-width: 100%;
 
       .item {
         width: 420px;
