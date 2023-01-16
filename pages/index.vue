@@ -41,6 +41,7 @@ import WebDialog from '~/components/webDialog'
 
 export default {
   async asyncData ({ params, app }) {
+    // 接口地址错误会导致项目启动失败, 请确保服务器地址填写正确
     let response = await app.$axios.$get('/dynamicConsulting/getDynamicConsultingList');
     console.log(response, 'response')
     return {
